@@ -46,6 +46,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 ```
   helm repo add novum-rgi-helm https://novumrgi.github.io/helm/
   helm install gitea novum-rgi-helm/gitea
+```
 
 ##  3. <a name='Configuration'></a>Configuration
 
@@ -56,8 +57,8 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.config.appName | App name that shows in every Page | Gitea: Git with a cup of tea |
 |gitea.config.runMode | Run Mode for Gitea, either dev, prod or test | dev               |
 |gitea.config.runUser | User for gitea container to run   | git                          |
-|gitea.config.adminUser | Admin user to login in gitea   | admin                         |
-|gitea.config.adminPassword | Password for admin user   | gitea                         |
+|gitea.config.adminUser | Admin user to login in gitea   | gitea_admin |
+|gitea.config.adminPassword | Password for admin user   | gitea123456                         |
 |gitea.config.adminEmail | Email for admin user   | example@gitea.com                   |
 
 ###  3.2. <a name='Gitearepository'></a>Gitea repository
@@ -201,7 +202,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.security.importLocalPaths|Set to false to prevent all users (including admin) from importing local path on server.|false|
 |gitea.security.disabledGitHooks|Set to true to prevent all users (including admin) from creating custom git hooks|false|
 |gitea.security.onlyAllowPushIfGiteaEnvSet|Set to false to allow pushes to gitea repositories despite having an incomplete environment - NOT RECOMMENDED|true|
-|gitea.security.passwordComplexity|Comma separated list of character classes required to pass minimum complexity.|lower,upper,digit,spec|
+|gitea.security.passwordComplexity|Comma separated list of character classes required to pass minimum complexity. [lower,upper,digit,spec]|off|
 |gitea.security.passwordHashAlgo|Password Hash algorithm, either "pbkdf2", "argon2", "scrypt" or "bcrypt"|pbkdf2|
 |gitea.security.crsfCookieHttpOnly|Set false to allow JavaScript to read CSRF cookie|true|
 

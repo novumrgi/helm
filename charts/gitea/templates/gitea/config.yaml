@@ -656,14 +656,14 @@ data:
     ROOT_PATH = {{ .Values.gitea.log.rootPath }}
     ; Either "console", "file", "conn", "smtp" or "database", default is "console"
     ; Use comma to separate multiple modes, e.g. "console, file"
-    MODE = {{ .Values.gitea.log.console }}
+    MODE = {{ .Values.gitea.log.mode }}
     ; Buffer length of the channel, keep it as it is if you don't know what it is.
     BUFFER_LEN = {{ .Values.gitea.log.bufferLen }}
     REDIRECT_MACARON_LOG = {{ .Values.gitea.log.redirectMacaronLog }}
     MACARON = {{ .Values.gitea.log.macaron }}
     ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Info"
     ROUTER_LOG_LEVEL = {{ .Values.gitea.log.routerLogLevel }}
-    ROUTER = {{ .Values.gitea.log.console }}
+    ROUTER = {{ .Values.gitea.log.router }}
     ENABLE_ACCESS_LOG = {{ .Values.gitea.log.enableAccessLog }}
     ACCESS = {{ .Values.gitea.log.access }}
     ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"

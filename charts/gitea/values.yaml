@@ -52,11 +52,12 @@ affinity: {}
 
 persistence:
   enabled: true
+  # existingClaim: 
   annotations:
   size: 10Gi
   accessModes:
     - ReadWriteOnce
-  storageClass:
+  #storageClass: 
 
 gitea:
   config:
@@ -65,8 +66,8 @@ gitea:
     # Do not change the run user for gitea default container
     runUser: git
 
-    adminUser: "admin"
-    adminPassword: "gitea"
+    adminUser: "gitea_admin"
+    adminPassword: "gitea123456"
     adminEmail: "example@gitea.com"
 
   ldap:
@@ -181,7 +182,7 @@ gitea:
     defaultEmailNotifications: enabled
 
   security:
-    installLock: false
+    installLock: true
     secretKey: "!#@FDEWREWR&*("
     loginRememberDays: 7
     cookieUsername: gitea_awesome
@@ -192,7 +193,7 @@ gitea:
     importLocalPaths: false
     disabledGitHooks: false
     onlyAllowPushIfGiteaEnvSet: true
-    passwordComplexity: lower,upper,digit,spec
+    passwordComplexity: "off"
     passwordHashAlgo: pbkdf2
     crsfCookieHttpOnly: true
 
