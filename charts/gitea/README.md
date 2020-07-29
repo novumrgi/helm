@@ -39,6 +39,8 @@
 
 [Gitea](https://gitea.io/en-us/) is a community managed lightweight code hosting solution written in Go. It is published under the MIT license.
 
+Readme will be updated with examples in the next few days
+
 ##  1. <a name='Introduction'></a>Introduction
 
 This helm chart has taken some inspiration from https://github.com/jfelten/gitea-helm-chart
