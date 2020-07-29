@@ -3,27 +3,31 @@
 * 1. [Introduction](#Introduction)
 * 2. [Installing](#Installing)
 * 3. [Configuration](#Configuration)
-	* 3.1. [Gitea Configuration](#GiteaConfiguration)
-	* 3.2. [Gitea repository](#Gitearepository)
-	* 3.3. [Gitea Ldap](#GiteaLdap)
-	* 3.4. [Gitea Server](#GiteaServer)
-	* 3.5. [Gitea Repository](#GiteaRepository)
-	* 3.6. [Gitea UI](#GiteaUI)
-	* 3.7. [Gitea Database](#GiteaDatabase)
-	* 3.8. [Gitea Admin](#GiteaAdmin)
-	* 3.9. [Gitea Security](#GiteaSecurity)
-	* 3.10. [Gitea OpenID](#GiteaOpenID)
-	* 3.11. [Gitea Service](#GiteaService)
-	* 3.12. [Gitea Webhook](#GiteaWebhook)
-	* 3.13. [Gitea Mailer](#GiteaMailer)
-	* 3.14. [Gitea Cache](#GiteaCache)
-	* 3.15. [Gitea Attachment](#GiteaAttachment)
-	* 3.16. [Gitea Log](#GiteaLog)
-	* 3.17. [Gitea Git](#GiteaGit)
-	* 3.18. [Gitea Extra Config](#GiteaExtraConfig)
-	* 3.19. [Memcached BuiltIn](#MemcachedBuiltIn)
-	* 3.20. [Mysql BuiltIn](#MysqlBuiltIn)
-	* 3.21. [Postgresql BuiltIn](#PostgresqlBuiltIn)
+	* 3.1. [Image](#Image)
+	* 3.2. [Persistence](#Persistence)
+	* 3.3. [Ingress](#Ingress)
+	* 3.4. [Service](#Service)
+	* 3.5. [Gitea Configuration](#GiteaConfiguration)
+	* 3.6. [Gitea repository](#Gitearepository)
+	* 3.7. [Gitea Ldap](#GiteaLdap)
+	* 3.8. [Gitea Server](#GiteaServer)
+	* 3.9. [Gitea Repository](#GiteaRepository)
+	* 3.10. [Gitea UI](#GiteaUI)
+	* 3.11. [Gitea Database](#GiteaDatabase)
+	* 3.12. [Gitea Admin](#GiteaAdmin)
+	* 3.13. [Gitea Security](#GiteaSecurity)
+	* 3.14. [Gitea OpenID](#GiteaOpenID)
+	* 3.15. [Gitea Service](#GiteaService)
+	* 3.16. [Gitea Webhook](#GiteaWebhook)
+	* 3.17. [Gitea Mailer](#GiteaMailer)
+	* 3.18. [Gitea Cache](#GiteaCache)
+	* 3.19. [Gitea Attachment](#GiteaAttachment)
+	* 3.20. [Gitea Log](#GiteaLog)
+	* 3.21. [Gitea Git](#GiteaGit)
+	* 3.22. [Gitea Extra Config](#GiteaExtraConfig)
+	* 3.23. [Memcached BuiltIn](#MemcachedBuiltIn)
+	* 3.24. [Mysql BuiltIn](#MysqlBuiltIn)
+	* 3.25. [Postgresql BuiltIn](#PostgresqlBuiltIn)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -50,7 +54,44 @@ Also this chart provides ldap and admin user configuration with values as well a
 
 ##  3. <a name='Configuration'></a>Configuration
 
-###  3.1. <a name='GiteaConfiguration'></a>Gitea Configuration
+###  3.1. <a name='Image'></a>Image
+
+| Parameter           | Description                       | Default                      |
+|---------------------|-----------------------------------|------------------------------|
+|image.repository| Image to start for this pod | gitea/gitea |
+|image.version| Image Version | 1.12.2 |
+|image.pullPolicy| Image pull policy | Always |
+
+###  3.2. <a name='Persistence'></a>Persistence
+
+| Parameter           | Description                       | Default                      |
+|---------------------|-----------------------------------|------------------------------|
+|persistence.enabled| Enable persistence for Gitea |true|
+|persistence.existingClaim| Use an existing claim to store repository information | |
+|persistence.size| Size for persistence to store repo information | 10Gi |
+|persistence.accessModes|AccessMode for persistence||
+|persistence.storageClass|Storage class for repository persistence|standard|
+
+###  3.3. <a name='Ingress'></a>Ingress
+
+| Parameter           | Description                       | Default                      |
+|---------------------|-----------------------------------|------------------------------|
+|ingress.enabled| enable ingress | false|
+|ingress.annotations| add ingress annotations | |
+|ingress.hosts| add hosts for ingress as string list | git.example.com |
+|ingress.tls|add ingress tls settings|[]|
+
+###  3.4. <a name='Service'></a>Service
+
+| Parameter           | Description                       | Default                      |
+|---------------------|-----------------------------------|------------------------------|
+|service.http.type| Kubernetes service type for web traffic | ClusterIP |
+|service.http.port| Port for web traffic | 3000 |
+|service.ssh.type| Kubernetes service type for ssh traffic | ClusterIP |
+|service.ssh.port| Port for ssh traffic | 22 |
+|service.ssh.annotations| Additional ssh annotations for the ssh service ||
+
+###  3.5. <a name='GiteaConfiguration'></a>Gitea Configuration
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -61,7 +102,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.config.adminPassword | Password for admin user   | gitea123456                         |
 |gitea.config.adminEmail | Email for admin user   | example@gitea.com                   |
 
-###  3.2. <a name='Gitearepository'></a>Gitea repository
+###  3.6. <a name='Gitearepository'></a>Gitea repository
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -75,7 +116,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.repository.disableHttpGit|Disable the ability to interact with repositories over the HTTP protocol.| false|
 |gitea.repository.useCompatSSHUri|Force ssh:// clone url instead of scp-style uri when default SSH port is used.|false|
 
-###  3.3. <a name='GiteaLdap'></a>Gitea Ldap
+###  3.7. <a name='GiteaLdap'></a>Gitea Ldap
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -92,7 +133,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.ldap.bindPassword | The password for the Bind DN specified above, if any. Note: The password is stored in plaintext at the server. As such, ensure that the Bind DN has as few privileges as possible. | "" |
 |gitea.ldap.usernameAttribute | The attribute of the user’s LDAP record containing the user name. Given attribute value will be used for new Gitea account user name after first successful sign-in. Leave empty to use login name given on sign-in form. | "" |
 
-###  3.4. <a name='GiteaServer'></a>Gitea Server
+###  3.8. <a name='GiteaServer'></a>Gitea Server
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -102,7 +143,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.server.http.externalPort | SSH clone setting for which port gitea will be available on clone | |
 |gitea.server.offlineMode | Disables use of CDN for static files and Gravatar for profile pictures. | false|
 
-###  3.5. <a name='GiteaRepository'></a>Gitea Repository
+###  3.9. <a name='GiteaRepository'></a>Gitea Repository
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -138,7 +179,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.repository.signing.wiki| [never, pubkey, twofa, always, parentsigned]: Sign commits to wiki. | never |
 |gitea.repository.signing.merges|  [never, pubkey, twofa, approved, basesigned, commitssigned, always]: Sign merges.  | pubkey, twofa, basesigned, commitssigned |gitea.ui.explorePagingNum|Number of repositories that are shown in one explore page.|20|
 
-###  3.6. <a name='GiteaUI'></a>Gitea UI
+###  3.10. <a name='GiteaUI'></a>Gitea UI
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -155,7 +196,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.ui.searchRepoDescription|Whether to search within description at repository search on explore page.|true|
 |gitea.ui.useServiceWorker|Whether to enable a Service Worker to cache frontend assets|true|
 
-###  3.7. <a name='GiteaDatabase'></a>Gitea Database
+###  3.11. <a name='GiteaDatabase'></a>Gitea Database
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -180,14 +221,14 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.database.connMaxLifetime|Database connection max life time|3s|
 |gitea.database.maxOpenConns|Database maximum number of open connections|0|
 
-###  3.8. <a name='GiteaAdmin'></a>Gitea Admin
+###  3.12. <a name='GiteaAdmin'></a>Gitea Admin
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
 |gitea.admin.disableRegularOrgCreation|Disallow regular (non-admin) users from creating organizations.|false|
 |gitea.admin.defaultEmailNotifications|Default configuration for email notifications for users (user configurable). Options: enabled, onmention, disabled|enabled|
 
-###  3.9. <a name='GiteaSecurity'></a>Gitea Security
+###  3.13. <a name='GiteaSecurity'></a>Gitea Security
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -206,7 +247,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.security.passwordHashAlgo|Password Hash algorithm, either "pbkdf2", "argon2", "scrypt" or "bcrypt"|pbkdf2|
 |gitea.security.crsfCookieHttpOnly|Set false to allow JavaScript to read CSRF cookie|true|
 
-###  3.10. <a name='GiteaOpenID'></a>Gitea OpenID
+###  3.14. <a name='GiteaOpenID'></a>Gitea OpenID
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -215,7 +256,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.openid.whitelistedUris|Allowed URI patterns (POSIX regexp). Space seperated||
 |gitea.openid.blacklistedUris|Forbidden URI patterns (POSIX regexp). Space seperated||
 
-###  3.11. <a name='GiteaService'></a>Gitea Service
+###  3.15. <a name='GiteaService'></a>Gitea Service
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -252,7 +293,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.service.autoWatchNewRepos|Default value for AutoWatchNewRepos|true|
 |gitea.service.autoWatchOnChanges|Default value for AutoWatchOnChanges|false|
 
-###  3.12. <a name='GiteaWebhook'></a>Gitea Webhook
+###  3.16. <a name='GiteaWebhook'></a>Gitea Webhook
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -261,7 +302,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.webhook.skipTlsVerify|Allow insecure certification|false|
 |gitea.webhook.pagingNum|Number of history information in each page|10|
 
-###  3.13. <a name='GiteaMailer'></a>Gitea Mailer
+###  3.17. <a name='GiteaMailer'></a>Gitea Mailer
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -285,7 +326,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.mailer.sendMailArgs|Specify any extra sendmail arguments||
 |gitea.mailer.sendMailTimeout|Timeout for Sendmail|5m|
 
-###  3.14. <a name='GiteaCache'></a>Gitea Cache
+###  3.18. <a name='GiteaCache'></a>Gitea Cache
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -299,7 +340,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.cache.lastCommit.itemTTL| Time to keep items in cache if not used, Setting it to 0 disables caching. | 8760h |
 |gitea.cache.lastCommit.commitCount| Only enable the cache when repository’s commits count great than. | 1000 |
 
-###  3.15. <a name='GiteaAttachment'></a>Gitea Attachment
+###  3.19. <a name='GiteaAttachment'></a>Gitea Attachment
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -309,7 +350,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.attachment.maxSize|Maximum size (MB).|4|
 |gitea.attachment.maxFiles|Maximum number of attachments that can be uploaded at once.|5|
 
-###  3.16. <a name='GiteaLog'></a>Gitea Log
+###  3.20. <a name='GiteaLog'></a>Gitea Log
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -351,7 +392,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.log.smtp.password|Mailer password||
 |gitea.log.smtp.receivers|Receivers, can be one or more, e.g. 1@example.com,2@example.com|false|
 
-###  3.17. <a name='GiteaGit'></a>Gitea Git
+###  3.21. <a name='GiteaGit'></a>Gitea Git
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -372,13 +413,13 @@ Also this chart provides ldap and admin user configuration with values as well a
 |gitea.git.metrics.enabled| Enables /metrics endpoint for prometheus.|false|
 |gitea.git.metrics.token|You need to specify the token, if you want to include in the authorization the metrics . The same token need to be used in prometheus parameters bearer_token or bearer_token_file.||
 
-###  3.18. <a name='GiteaExtraConfig'></a>Gitea Extra Config
+###  3.22. <a name='GiteaExtraConfig'></a>Gitea Extra Config
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
 |gitea.extraConfig|If you want anymore configuration you need to do it here as a multiline string. For example look at https://docs.gitea.io/en-us/config-cheat-sheet/||
 
-###  3.19. <a name='MemcachedBuiltIn'></a>Memcached BuiltIn
+###  3.23. <a name='MemcachedBuiltIn'></a>Memcached BuiltIn
 
 Memcached is loaded as a dependency from [Bitnami](https://github.com/bitnami/charts/tree/master/bitnami/memcached) if enabled in the values. Complete Configuration can be taken from their website.
 
@@ -388,7 +429,7 @@ The following parameters are the defaults set by this chart
 |---------------------|-----------------------------------|------------------------------|
 |memcached.service.port|Memcached Port| 11211|
 
-###  3.20. <a name='MysqlBuiltIn'></a>Mysql BuiltIn
+###  3.24. <a name='MysqlBuiltIn'></a>Mysql BuiltIn
 
 Mysql is loaded as a dependency from stable. Configuration can be found from this [website](https://github.com/helm/charts/tree/master/stable/mysql)
 
@@ -403,7 +444,7 @@ The following parameters are the defaults set by this chart
 |mysql.service.port|Port to connect to mysql service|3306|
 |mysql.persistence|Persistence size for mysql |10Gi|
 
-###  3.21. <a name='PostgresqlBuiltIn'></a>Postgresql BuiltIn
+###  3.25. <a name='PostgresqlBuiltIn'></a>Postgresql BuiltIn
 
 Postgresql is loaded as a dependency from bitnami. Configuration can be found from this [Bitnami](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
 

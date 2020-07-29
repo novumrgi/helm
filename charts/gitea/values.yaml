@@ -53,11 +53,10 @@ affinity: {}
 persistence:
   enabled: true
   # existingClaim: 
-  annotations:
   size: 10Gi
   accessModes:
     - ReadWriteOnce
-  #storageClass: 
+  storageClass: standard
 
 gitea:
   config:
