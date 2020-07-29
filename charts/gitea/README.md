@@ -234,7 +234,7 @@ Also this chart provides ldap and admin user configuration with values as well a
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
-|gitea.security.installLock|Disallow access to the install page.|false|
+|gitea.security.installLock|Disallow access to the install page.|true|
 |gitea.security.secretKey|Global secret key. This should be changed.|!#@FDEWREWR&*(|
 |gitea.security.loginRememberDays|Cookie lifetime, in days.|7|
 |gitea.security.cookieUsername|Name of the cookie used to store the current username.|gitea_awesome|
