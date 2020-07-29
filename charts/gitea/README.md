@@ -43,7 +43,9 @@ Also this chart provides ldap and admin user configuration with values as well a
 
 ##  2. <a name='Installing'></a>Installing
 
-TBD
+```
+  helm repo add novum-rgi-helm https://novumrgi.github.io/helm/
+  helm install gitea novum-rgi-helm/gitea
 
 ##  3. <a name='Configuration'></a>Configuration
 
