@@ -1,0 +1,127 @@
+{{- $anonymous := .Values.glowroot.admin.anonymousUser -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "glowroot.cm" . }}
+  labels:
+    app: {{ include "glowroot.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  admin-default.json: |-
+    {
+      "general": {
+        "centralDisplayName": {{ .Values.glowroot.admin.general.displayName | quote}}
+      }
+      {{- if or (hasKey .Values.glowroot.admin "users") ($anonymous) -}},
+      "users": [
+          {{- if $anonymous }}
+          {
+            "username": "anonymous",
+            "roles": [
+              "Administrator"
+            ]
+          }
+          {{- end }}
+          {{- range $i, $user := .Values.glowroot.admin.users -}}
+          {{- if or ($i) ($anonymous) -}},{{- end }}
+          {
+            "username": {{ $user.name | quote }},
+            "password": {{ $user.password | quote  }},
+            "roles": [
+              {{- range $i, $role := $user.roles -}}
+              {{- if $i -}},{{- end }}
+              {{ $role | quote }}
+              {{- end }}
+            ]
+          }
+          {{- end }}
+      ],
+      {{- end }}
+      "roles": [
+        {
+          "name": "Administrator",
+          "permissions": [
+            "admin",
+            "agent:*:config",
+            "agent:*:error",
+            "agent:*:incident",
+            "agent:*:jvm",
+            "agent:*:syntheticMonitor",
+            "agent:*:transaction"
+          ]
+        }
+        {{- range $i, $role := .Values.glowroot.admin.roles -}},
+        {
+          "name": {{ $role.name | quote }},
+          "permissions": [
+            {{- range $i, $permission := $role.permissions -}}
+            {{- if $i -}},{{- end }}
+            {{ $permission | quote }}
+            {{- end }}
+          ]
+        }
+        {{- end }}
+      ],
+      "web": {
+        "sessionTimeoutMinutes": {{ .Values.glowroot.admin.web.sessionTimeoutMin }},
+        "sessionCookieName": {{ .Values.glowroot.admin.web.sessionCookieName | quote}}
+      },
+      "storage": {
+        "rollupExpirationHours": [
+          {{ .Values.glowroot.admin.storage.responseTimeJvmGaugeHours.oneMinAggregates }},
+          {{ .Values.glowroot.admin.storage.responseTimeJvmGaugeHours.fiveMinAggregates }},
+          {{ .Values.glowroot.admin.storage.responseTimeJvmGaugeHours.thirtyMinAggregates }},
+          {{ .Values.glowroot.admin.storage.responseTimeJvmGaugeHours.fourHourAggregates }}
+        ],
+        "queryAndServiceCallRollupExpirationHours": [
+          {{ .Values.glowroot.admin.storage.queryServiceCallDataHours.oneMinAggregates }},
+          {{ .Values.glowroot.admin.storage.queryServiceCallDataHours.fiveMinAggregates }},
+          {{ .Values.glowroot.admin.storage.queryServiceCallDataHours.thirtyMinAggregates }},
+          {{ .Values.glowroot.admin.storage.queryServiceCallDataHours.fourHourAggregates }}
+        ],
+        "profileRollupExpirationHours": [
+          {{ .Values.glowroot.admin.storage.profileDataHours.oneMinAggregates }},
+          {{ .Values.glowroot.admin.storage.profileDataHours.fiveMinAggregates }},
+          {{ .Values.glowroot.admin.storage.profileDataHours.thirtyMinAggregates }},
+          {{ .Values.glowroot.admin.storage.profileDataHours.fourHourAggregates }}
+        ],
+        "traceExpirationHours": {{ .Values.glowroot.admin.storage.traceDataHours }}
+      }{{- if .Values.glowroot.admin.ldap.enabled -}},
+      "ldap": {
+        "host": {{ .Values.glowroot.admin.ldap.connection.host | quote }},
+        "port": {{ .Values.glowroot.admin.ldap.connection.port }},
+        "username": {{ .Values.glowroot.admin.ldap.connection.bindDN | quote }},
+        "password": {{ .Values.glowroot.admin.ldap.connection.bindPw | quote }},
+        "userBaseDn": {{ .Values.glowroot.admin.ldap.structure.userBaseDN | quote }},
+        "userSearchFilter": {{ .Values.glowroot.admin.ldap.structure.userSearchFilter | quote }},
+        "groupBaseDn": {{ .Values.glowroot.admin.ldap.structure.groupBaseDN | quote }},
+        "groupSearchFilter": {{ .Values.glowroot.admin.ldap.structure.groupSearchFilter | quote }}
+        {{- if hasKey .Values.glowroot.admin.ldap "mapping" -}},
+        "roleMappings": {
+          {{- range $i, $el := .Values.glowroot.admin.ldap.mapping -}}
+          {{- if $i -}},{{- end }}
+          {{ $el.ldapGroupDN | quote }}: [
+            {{- range $i, $role := $el.glowrootRoles -}}
+            {{- if $i -}},{{- end }}
+            {{ $role | quote }}
+            {{- end }}
+          ]
+          {{- end }}
+        }
+        {{- end }}
+      }
+      {{- end }}
+      {{- if .Values.glowroot.admin.smtp.enabled -}},
+      "smtp": {
+        "host": {{ .Values.glowroot.admin.smtp.host | quote }},
+        "port": {{ .Values.glowroot.admin.smtp.port | quote }},
+        "connectionSecurity": {{ .Values.glowroot.admin.smtp.connectionSecurity | quote }},
+        "username": {{ .Values.glowroot.admin.smtp.username | quote }},
+        "password": {{ .Values.glowroot.admin.smtp.password | quote }},
+        "fromEmailAddress": {{ .Values.glowroot.admin.smtp.fromEmailAddress | quote }},
+        "fromDisplayName": {{ .Values.glowroot.admin.smtp.fromDisplayName | quote }}
+      }
+      {{- end }}
+    }

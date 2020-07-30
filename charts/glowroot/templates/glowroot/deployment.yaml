@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "glowroot.fullname" . }}
+  labels:
+    {{- include "glowroot.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "glowroot.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config/glowroot-cm.yaml") . | sha256sum }}
+      labels:
+        {{- include "glowroot.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 999
+      volumes:
+        - name: glowroot-config
+          configMap:
+            name: {{ include "glowroot.cm" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: "CASSANDRA_CONTACT_POINTS"
+              value: {{ template "cassandra.fullname" . }}
+            - name: "CASSANDRA_USERNAME"
+              value: {{ default "" .Values.cassandra.dbUser.user | quote }}
+            - name: "CASSANDRA_PASSWORD"
+              value: {{ default "" .Values.cassandra.dbUser.password | quote }}
+            - name: "CASSANDRA_KEYSPACE"
+              value: {{ default "" .Values.cassandra.keyspace | quote }}
+            - name: "CASSANDRA_SYMMETRIC_ENCRYPTION_KEY"
+              value: {{ default "" .Values.glowroot.cassandra.symmetricEncryptionKey | quote }}
+            - name: "UI_CONTEXT_PATH"
+              value: {{ default "" .Values.glowroot.ui.contextPath | quote }}
+          ports:
+            - name: ui-http
+              containerPort: 4000
+              protocol: TCP
+            - name: agent-http
+              containerPort: 8181
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: ui-http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: ui-http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: glowroot-config
+              mountPath: /usr/share/glowroot-central/admin-default.json
+              subPath: admin-default.json

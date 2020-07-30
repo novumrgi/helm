@@ -3,7 +3,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-07-29T14:22:08.4287906+02:00"
+    created: "2020-07-30T10:27:29.4175179+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -18,10 +18,25 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 4.2.20
     description: Gitea Helm chart for Kubernetes
-    digest: e9fff82eca6a312b97b2c2320686d6d6809e6a49a7886df3c5e0c50b40839fc0
+    digest: 8ef9afeedeccac602d0e8f554ee21547015cfdbbf33e6aa69a3162bf380c21f5
     name: gitea
     type: application
     urls:
     - https://novumrgi.github.io/helm/gitea-1.0.0.tgz
     version: 1.0.0
-generated: "2020-07-29T14:22:08.4220723+02:00"
+  glowroot:
+  - apiVersion: v2
+    appVersion: 0.13.7
+    created: "2020-07-30T10:27:29.4192913+02:00"
+    dependencies:
+    - name: cassandra
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.5.0
+    description: A Helm chart for Kubernetes
+    digest: 6b72dc9a42217466b6f08cd487ddf5aecc87d3816c01080c9f57aaf2e2862552
+    name: glowroot
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/glowroot-1.0.0.tgz
+    version: 1.0.0
+generated: "2020-07-30T10:27:29.4097536+02:00"
