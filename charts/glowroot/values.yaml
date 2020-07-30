@@ -67,6 +67,7 @@ glowroot:
         #host:
         #port:
         #ssl:
+        #follow:
         #bindDN:
         #bindPw:
       #structure:

@@ -130,6 +130,7 @@ To get more information on the permissions format simply start glowroot with ano
 |glowroot.admin.ldap.connection.host|LDAP server hostname or IP address. ||
 |glowroot.admin.ldap.connection.port|Port to connect for ldap. Defaults to port 389 for non-SSL, and 636 for SSL. ||
 |glowroot.admin.ldap.connection.ssl|Use SSL| false|
+|glowroot.admin.ldap.connection.follow|Traverse ldap tree, might slow down your ldap connection| true|
 |glowroot.admin.ldap.connection.bindDN|Username that Glowroot uses to bind and run LDAP queries. ||
 |glowroot.admin.ldap.connection.bindPw|Password that Glowroot uses to bind and run LDAP queries. ||
 |glowroot.ldap.structure.userBaseDN|Base DN for locating users, e.g. ou=Users,dc=example,dc=com||
