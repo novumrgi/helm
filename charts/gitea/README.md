@@ -1,3 +1,9 @@
+# Gitea Helm Chart
+
+[Gitea](https://gitea.io/en-us/) is a community managed lightweight code hosting solution written in Go. It is published under the MIT license.
+
+Readme will be updated with examples in the next few days
+
 # Content
 <!-- vscode-markdown-toc -->
 * 1. [Introduction](#Introduction)
@@ -34,12 +40,6 @@
 	autoSave=true
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
-
-# Gitea Helm Chart
-
-[Gitea](https://gitea.io/en-us/) is a community managed lightweight code hosting solution written in Go. It is published under the MIT license.
-
-Readme will be updated with examples in the next few days
 
 ##  1. <a name='Introduction'></a>Introduction
 
