@@ -31,7 +31,7 @@ This is a kubernetes helm chart for Glowroot. It deploys a pod for glowroot-cent
 
 ```
   helm repo add novum-rgi-helm https://novumrgi.github.io/helm/
-  helm install gitea novum-rgi-helm/glowroot
+  helm install glowroot novum-rgi-helm/glowroot
 ```
 
 ##  3. <a name='CurrentLimitation'></a>Current Limitation
@@ -167,5 +167,5 @@ The following parameters are set by this charts by default
 |---------------------|-----------------------------------|------------------------------|
 |ingress.enabled| enable ingress | false|
 |ingress.annotations| add ingress annotations | |
-|ingress.hosts| add hosts for ingress as string list | git.example.com |
+|ingress.hosts| add hosts for ingress as string list | glowroot.example.com |
 |ingress.tls|add ingress tls settings|[]|
