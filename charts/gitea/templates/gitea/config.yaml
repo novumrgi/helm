@@ -196,7 +196,7 @@ data:
     {{- else -}}
     {{- $proto := set . "proto" "http" }}
     {{- end -}}
-    {{- if and .Values.gitea.server.http.externalDomain ( .Values.gitea.server.http.externalPort ) }}
+    {{- if and .Values.gitea.server.http.externalDomain .Values.gitea.server.http.externalPort }}
     ROOT_URL = {{ .proto }}://{{ .Values.gitea.server.http.externalDomain }}:{{ .Values.gitea.server.http.externalPort }}/
     {{- else if .Values.gitea.server.http.externalDomain }}
     ROOT_URL = {{ .proto }}://{{ .Values.gitea.server.http.externalDomain }}/

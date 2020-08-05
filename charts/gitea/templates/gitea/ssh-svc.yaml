@@ -8,7 +8,7 @@ metadata:
 {{ toYaml .Values.service.ssh.annotations | indent 4 }}
 spec:
   type: {{ .Values.service.ssh.type }}
-  {{- if (.Values.service.ssh.loadBalancerIP) and eq .Values.service.ssh.serviceType "LoadBalancer" }}
+  {{- if and .Values.service.ssh.loadBalancerIP (eq .Values.service.ssh.type "LoadBalancer") }}
   loadBalancerIP: {{ .Values.service.ssh.loadBalancerIP }}
   {{- end }}
   clusterIP: None

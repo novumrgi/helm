@@ -29,7 +29,7 @@ spec:
                 nc -v -w2 -z {{ include "postgresql.servicename" . }} {{ .Values.postgresql.global.postgresql.servicePort }} && \
                 su git -c ' \
                 gitea migrate; \
-                {{- if and .Values.gitea.config.adminUser (.Values.gitea.config.adminPassword) }}
+                {{- if and .Values.gitea.config.adminUser .Values.gitea.config.adminPassword }}
                 gitea admin create-user --username {{ .Values.gitea.config.adminUser }} --password '{{ .Values.gitea.config.adminPassword }}' --email {{ .Values.gitea.config.adminEmail }} --admin \
                 || \
                 gitea admin change-password --username {{ .Values.gitea.config.adminUser }} --password '{{ .Values.gitea.config.adminPassword }}'; \

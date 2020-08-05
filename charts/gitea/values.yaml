@@ -18,6 +18,8 @@ service:
   ssh:
     type: ClusterIP
     port: 22
+    #loadBalancerIP:
+    #nodePort:
     annotations:
 
 ingress:
