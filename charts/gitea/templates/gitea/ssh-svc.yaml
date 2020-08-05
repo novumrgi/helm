@@ -11,7 +11,9 @@ spec:
   {{- if and .Values.service.ssh.loadBalancerIP (eq .Values.service.ssh.type "LoadBalancer") }}
   loadBalancerIP: {{ .Values.service.ssh.loadBalancerIP }}
   {{- end }}
+  {{- if ne .Values.service.ssh.type "LoadBalancer" }}
   clusterIP: None
+  {{- end }}
   ports:
   - name: ssh
     port: {{ .Values.service.ssh.port }}

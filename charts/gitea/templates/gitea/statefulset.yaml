@@ -84,7 +84,7 @@ spec:
                 gitea migrate
           ports:
             - name: ssh
-              containerPort: {{ .Values.service.ssh.port }}
+              containerPort: 22
             - name: http
               containerPort: {{ .Values.service.http.port }}
           livenessProbe:
