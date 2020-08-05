@@ -3,7 +3,30 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-05T16:19:21.296775+02:00"
+    created: "2020-08-05T16:25:44.4970344+02:00"
+    dependencies:
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.6.4
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 1.6.6
+    - condition: gitea.cache.enabled
+      name: memcached
+      repository: https://charts.bitnami.com/bitnami
+      version: 4.2.20
+    description: Gitea Helm chart for Kubernetes
+    digest: 8e8be1fcf2d5361fef9f0b99dbbc704a666635e6863fbdbd66872cbaf486ea0a
+    name: gitea
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/gitea-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.12.2
+    created: "2020-08-05T16:25:44.4905435+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -26,7 +49,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-05T16:19:21.2903814+02:00"
+    created: "2020-08-05T16:25:44.4846619+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -47,56 +70,10 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/gitea-1.0.0.tgz
     version: 1.0.0
-  - apiVersion: v2
-    appVersion: 1.12.2
-    created: "2020-08-05T16:19:21.2850623+02:00"
-    dependencies:
-    - condition: gitea.database.builtIn.postgresql.enabled
-      name: postgresql
-      repository: https://charts.bitnami.com/bitnami
-      version: 8.6.4
-    - condition: gitea.database.builtIn.mysql.enabled
-      name: mysql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.6.6
-    - condition: gitea.cache.enabled
-      name: memcached
-      repository: https://charts.bitnami.com/bitnami
-      version: 4.2.20
-    description: Gitea Helm chart for Kubernetes
-    digest: 6bdd395b7e47408898f5cb1f8d9729202d189a80c1caadc8e9faf42cc949738a
-    name: gitea
-    type: application
-    urls:
-    - https://novumrgi.github.io/helm/gitea-0.0.2.tgz
-    version: 0.0.2
-  - apiVersion: v2
-    appVersion: 1.12.2
-    created: "2020-08-05T16:19:21.2785941+02:00"
-    dependencies:
-    - condition: gitea.database.builtIn.postgresql.enabled
-      name: postgresql
-      repository: https://charts.bitnami.com/bitnami
-      version: 8.6.4
-    - condition: gitea.database.builtIn.mysql.enabled
-      name: mysql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.6.6
-    - condition: gitea.cache.enabled
-      name: memcached
-      repository: https://charts.bitnami.com/bitnami
-      version: 4.2.20
-    description: Gitea Helm chart for Kubernetes
-    digest: b8eafe8eafefb9365e3f71eedc5a39ed24a0c88ce5cb450e0a97d28ee1ba858e
-    name: gitea
-    type: application
-    urls:
-    - https://novumrgi.github.io/helm/gitea-0.0.1.tgz
-    version: 0.0.1
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-08-05T16:19:21.2986418+02:00"
+    created: "2020-08-05T16:25:44.4988908+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -111,7 +88,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-08-05T16:19:21.299111+02:00"
+    created: "2020-08-05T16:25:44.4993405+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -119,4 +96,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nexus2-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-05T16:19:21.2721118+02:00"
+generated: "2020-08-05T16:25:44.477378+02:00"

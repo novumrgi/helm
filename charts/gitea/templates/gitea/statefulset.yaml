@@ -17,6 +17,8 @@ spec:
       labels:
         {{- include "gitea.selectorLabels" . | nindent 8 }}
     spec:
+      securityContext:
+        fsGroup: 1000
       initContainers:
         - name: init
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
