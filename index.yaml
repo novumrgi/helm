@@ -3,7 +3,30 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-05T16:25:44.4970344+02:00"
+    created: "2020-08-06T15:12:44.8907535+02:00"
+    dependencies:
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.6.4
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 1.6.6
+    - condition: gitea.cache.enabled
+      name: memcached
+      repository: https://charts.bitnami.com/bitnami
+      version: 4.2.20
+    description: Gitea Helm chart for Kubernetes
+    digest: 2ff16e7e74614b2c2c96110651bff83f10f09e27facaf04268d4b11e5dbdeafe
+    name: gitea
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/gitea-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 1.12.2
+    created: "2020-08-06T15:12:44.8846254+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -26,7 +49,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-05T16:25:44.4905435+02:00"
+    created: "2020-08-06T15:12:44.879235+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -49,7 +72,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-05T16:25:44.4846619+02:00"
+    created: "2020-08-06T15:12:44.87334+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -73,7 +96,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-08-05T16:25:44.4988908+02:00"
+    created: "2020-08-06T15:12:44.8925995+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -88,7 +111,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-08-05T16:25:44.4993405+02:00"
+    created: "2020-08-06T15:12:44.8930442+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -96,4 +119,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nexus2-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-05T16:25:44.477378+02:00"
+generated: "2020-08-06T15:12:44.8658721+02:00"
