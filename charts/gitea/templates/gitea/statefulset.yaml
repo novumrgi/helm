@@ -75,6 +75,7 @@ spec:
               mountPath: /etc/gitea/conf
             - name: data
               mountPath: /data
+      terminationGracePeriodSeconds: {{ .Values.statefulset.terminationGracePeriodSeconds }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"

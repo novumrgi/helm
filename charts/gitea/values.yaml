@@ -52,6 +52,9 @@ tolerations: []
 
 affinity: {}
 
+statefulset:
+  terminationGracePeriodSeconds: 60
+
 persistence:
   enabled: true
   # existingClaim: 
