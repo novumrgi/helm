@@ -1,9 +1,24 @@
 apiVersion: v1
 entries:
+  awx:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-08-07T14:41:30.3284725+02:00"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.6.4
+    description: A Helm chart for Kubernetes
+    digest: e096068203c0a4fbd0a840c3eccbc8580d941236479c35e3e46d6acc76a64cdf
+    name: awx
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/awx/awx-0.0.1.tgz
+    version: 0.0.1
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-07T10:27:16.8536848+02:00"
+    created: "2020-08-07T14:41:30.3517789+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -26,7 +41,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-07T10:27:16.8470503+02:00"
+    created: "2020-08-07T14:41:30.345467+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -49,7 +64,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-07T10:27:16.8411886+02:00"
+    created: "2020-08-07T14:41:30.3403578+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -72,7 +87,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-07T10:27:16.8350991+02:00"
+    created: "2020-08-07T14:41:30.3340578+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -96,7 +111,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-08-07T10:27:16.8554551+02:00"
+    created: "2020-08-07T14:41:30.3535816+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -111,7 +126,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-08-07T10:27:16.85587+02:00"
+    created: "2020-08-07T14:41:30.3539885+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -119,4 +134,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nexus/nexus2-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-07T10:27:16.8282731+02:00"
+generated: "2020-08-07T14:41:30.3201684+02:00"

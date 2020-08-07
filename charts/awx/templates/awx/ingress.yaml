@@ -1,7 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "awx.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- $agentPort := .Values.service.agentPort -}}
 {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
@@ -36,9 +35,5 @@ spec:
             backend:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
-          - path: /agent
-            backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $agentPort }}
   {{- end }}
 {{- end }}
