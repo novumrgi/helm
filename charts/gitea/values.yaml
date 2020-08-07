@@ -379,10 +379,12 @@ postgresql:
     size: 10Gi
 
 mysql:
-  mysqlRootPassword: gitea
-  mysqlUser: gitea
-  mysqlPassword: gitea
-  mysqlDatabase: gitea
+  root:
+    password: gitea
+  db:
+    user: gitea
+    password: gitea
+    name: gitea
   service:
     port: 3306
   persistence:

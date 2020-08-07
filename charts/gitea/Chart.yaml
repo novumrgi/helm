@@ -2,7 +2,7 @@ apiVersion: v2
 name: gitea
 description: Gitea Helm chart for Kubernetes
 type: application
-version: 1.0.3
+version: 1.0.4
 appVersion: 1.12.2
 
 dependencies:
@@ -11,8 +11,8 @@ dependencies:
   version: 8.6.4
   condition: gitea.database.builtIn.postgresql.enabled
 - name: mysql
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 1.6.6
+  repository: https://charts.bitnami.com/bitnami
+  version: 6.14.8
   condition: gitea.database.builtIn.mysql.enabled
 - name: memcached
   repository: https://charts.bitnami.com/bitnami

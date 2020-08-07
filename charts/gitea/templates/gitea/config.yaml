@@ -319,9 +319,9 @@ data:
     {{ else if .Values.gitea.database.builtIn.mysql.enabled }}
     DB_TYPE = mysql
     HOST = {{ include "mysql.dns" . }}
-    NAME = {{ .Values.mysql.mysqlDatabase }}
-    USER = {{ .Values.mysql.mysqlUser }}
-    PASSWD = {{ .Values.mysql.mysqlPassword }}
+    NAME = {{ .Values.mysql.db.name }}
+    USER = {{ .Values.mysql.db.user }}
+    PASSWD = {{ .Values.mysql.db.password }}
     {{ else }}
     ; Database to use. Either "mysql", "postgres", "mssql" or "sqlite3".
     DB_TYPE = {{ .Values.gitea.database.external.type }}

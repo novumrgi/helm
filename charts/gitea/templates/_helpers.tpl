@@ -55,8 +55,24 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- printf "%s-postgresql.%s.svc.cluster.local:%g" .Release.Name .Release.Namespace .Values.postgresql.global.postgresql.servicePort -}}
 {{- end -}}
 
-{{- define "postgresql.servicename" -}}
+{{- define "db.servicename" -}}
+{{- if .Values.gitea.database.builtIn.postgresql.enabled -}}
 {{- printf "%s-postgresql" .Release.Name -}}
+{{- else if .Values.gitea.database.builtIn.mysql.enabled -}}
+{{- printf "%s-mysql" .Release.Name -}}
+{{- else -}}
+{{ .Values.gitea.database.external.host }}
+{{- end -}}
+{{- end -}}
+
+{{- define "db.port" -}}
+{{- if .Values.gitea.database.builtIn.postgresql.enabled -}}
+{{ .Values.postgresql.global.postgresql.servicePort }}
+{{- else if .Values.gitea.database.builtIn.mysql.enabled -}}
+{{ .Values.mysql.service.port }}
+{{- else -}}
+{{ .Values.gitea.database.external.port }}
+{{- end -}}
 {{- end -}}
 
 {{- define "mysql.dns" -}}
