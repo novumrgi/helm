@@ -3,7 +3,30 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-06T15:12:44.8907535+02:00"
+    created: "2020-08-07T10:27:16.8536848+02:00"
+    dependencies:
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.6.4
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.14.8
+    - condition: gitea.cache.enabled
+      name: memcached
+      repository: https://charts.bitnami.com/bitnami
+      version: 4.2.20
+    description: Gitea Helm chart for Kubernetes
+    digest: a7ad276ad48c6b0f6563ecda8ddc27b4d5020fe45c13c6cfb03cc5a7c0e1645f
+    name: gitea
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/gitea/gitea-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 1.12.2
+    created: "2020-08-07T10:27:16.8470503+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -22,11 +45,11 @@ entries:
     name: gitea
     type: application
     urls:
-    - https://novumrgi.github.io/helm/gitea-1.0.3.tgz
+    - https://novumrgi.github.io/helm/gitea/gitea-1.0.3.tgz
     version: 1.0.3
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-06T15:12:44.8846254+02:00"
+    created: "2020-08-07T10:27:16.8411886+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -45,11 +68,11 @@ entries:
     name: gitea
     type: application
     urls:
-    - https://novumrgi.github.io/helm/gitea-1.0.2.tgz
+    - https://novumrgi.github.io/helm/gitea/gitea-1.0.2.tgz
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-06T15:12:44.879235+02:00"
+    created: "2020-08-07T10:27:16.8350991+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -68,35 +91,12 @@ entries:
     name: gitea
     type: application
     urls:
-    - https://novumrgi.github.io/helm/gitea-1.0.1.tgz
+    - https://novumrgi.github.io/helm/gitea/gitea-1.0.1.tgz
     version: 1.0.1
-  - apiVersion: v2
-    appVersion: 1.12.2
-    created: "2020-08-06T15:12:44.87334+02:00"
-    dependencies:
-    - condition: gitea.database.builtIn.postgresql.enabled
-      name: postgresql
-      repository: https://charts.bitnami.com/bitnami
-      version: 8.6.4
-    - condition: gitea.database.builtIn.mysql.enabled
-      name: mysql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.6.6
-    - condition: gitea.cache.enabled
-      name: memcached
-      repository: https://charts.bitnami.com/bitnami
-      version: 4.2.20
-    description: Gitea Helm chart for Kubernetes
-    digest: a63c0ec272d2ec06311c9cbfdf8f4efc7d3c64700c102dfb2a0d6696b17ec51e
-    name: gitea
-    type: application
-    urls:
-    - https://novumrgi.github.io/helm/gitea-1.0.0.tgz
-    version: 1.0.0
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-08-06T15:12:44.8925995+02:00"
+    created: "2020-08-07T10:27:16.8554551+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -106,17 +106,17 @@ entries:
     name: glowroot
     type: application
     urls:
-    - https://novumrgi.github.io/helm/glowroot-1.0.0.tgz
+    - https://novumrgi.github.io/helm/glowroot/glowroot-1.0.0.tgz
     version: 1.0.0
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-08-06T15:12:44.8930442+02:00"
+    created: "2020-08-07T10:27:16.85587+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
     type: application
     urls:
-    - https://novumrgi.github.io/helm/nexus2-0.1.0.tgz
+    - https://novumrgi.github.io/helm/nexus/nexus2-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-06T15:12:44.8658721+02:00"
+generated: "2020-08-07T10:27:16.8282731+02:00"
