@@ -107,6 +107,9 @@ gitea:
     preferredLicenses: Apache License 2.0,MIT License
     disableHttpGit: false
     useCompatSSHUri: false
+    enablePushCreateUser: false
+    enablePushCreateOrg: false
+    
 
     local:
       copyPath: tmp/local-repo

@@ -41,6 +41,10 @@ data:
     DISABLE_HTTP_GIT = {{ .Values.gitea.repository.disableHttpGit }}
     ; Force ssh:// clone url instead of scp-style uri when default SSH port is used
     USE_COMPAT_SSH_URI = {{ .Values.gitea.repository.useCompatSSHUri }}
+    ; Allow users to push local repositories to Gitea and have them automatically created for a user.
+    ENABLE_PUSH_CREATE_USER = {{ .Values.gitea.repository.enablePushCreateUser }}
+    ; Allow users to push local repositories to Gitea and have them automatically created for an org.
+    ENABLE_PUSH_CREATE_ORG = {{ .Values.gitea.repository.enablePushCreateOrg }}
 
     [repository.editor]
     ; List of file extensions for which lines should be wrapped in the CodeMirror editor

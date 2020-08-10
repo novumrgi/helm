@@ -178,6 +178,13 @@ Like the admin user the ldap settings can be updated but also disabled or delete
 
 ##  5. <a name='Configuration'></a>Configuration
 
+### Others
+
+| Parameter           | Description                       | Default                      |
+|---------------------|-----------------------------------|------------------------------|
+|statefulset.terminationGracePeriodSeconds| Image to start for this pod | gitea/gitea |
+
+
 ###  5.1. <a name='Image'></a>Image
 
 | Parameter           | Description                       | Default                      |
@@ -280,6 +287,8 @@ Like the admin user the ldap settings can be updated but also disabled or delete
 |gitea.repository.preferredLicenses| Apache License 2.0,MIT License: Preferred Licenses to place at the top of the list. Name must match file name in conf/license or custom/conf/license. | Apache License 2.0,MIT License |
 |gitea.repository.disableHttpGit| Disable the ability to interact with repositories over the HTTP protocol. | false |
 |gitea.repository.useCompatSSHUri| Force ssh:// clone url instead of scp-style uri when default SSH port is used. | false |
+|gitea.repository.enablePushCreateUser| Allow users to push local repositories to Gitea and have them automatically created for a user. | false |
+|gitea.repository.enablePushCreateOrg| Allow users to push local repositories to Gitea and have them automatically created for an org. | false |
 |gitea.repository.local.copyPath| Path for local repository copy. | tmp/local-repo |
 |gitea.repository.local.wikiPath| Path for local wiki copy. | tmp/local-wiki |
 |gitea.repository.upload.enabled| Whether repository file uploads are enabled. | true |
