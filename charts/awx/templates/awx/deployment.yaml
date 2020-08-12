@@ -11,6 +11,10 @@ spec:
       {{- include "awx.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/config.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/launch.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/supervisor.yaml") . | sha256sum }}
       labels:
         {{- include "awx.selectorLabels" . | nindent 8 }}
     spec:
@@ -28,10 +32,19 @@ spec:
             httpGet:
               path: /
               port: awx-web
+            initialDelaySeconds: 200
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /
               port: awx-web
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           volumeMounts:
             {{- include "awx.volumeMounts" . | nindent 12 }}
           resources:

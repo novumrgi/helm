@@ -3,7 +3,24 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-08-12T13:14:17.4030896+02:00"
+    created: "2020-08-12T17:04:06.4378287+02:00"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.6.4
+    description: Helm chart for AWX 14.0.0
+    digest: bf18575293ca3e24abbeb6aeb245a2141996e70b24d082018f9cee6784e0b74a
+    maintainers:
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: awx
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/awx/awx-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 14.0.0
+    created: "2020-08-12T17:04:06.435154+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -20,7 +37,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-08-12T13:14:17.4002667+02:00"
+    created: "2020-08-12T17:04:06.4318386+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -35,7 +52,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-12T13:14:17.4328891+02:00"
+    created: "2020-08-12T17:04:06.4679964+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -58,7 +75,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-12T13:14:17.4266794+02:00"
+    created: "2020-08-12T17:04:06.462468+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -81,7 +98,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-12T13:14:17.4204095+02:00"
+    created: "2020-08-12T17:04:06.45574+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -104,7 +121,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-12T13:14:17.4148573+02:00"
+    created: "2020-08-12T17:04:06.4496335+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -127,7 +144,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.12.2
-    created: "2020-08-12T13:14:17.4089234+02:00"
+    created: "2020-08-12T17:04:06.4439614+02:00"
     dependencies:
     - condition: gitea.database.builtIn.postgresql.enabled
       name: postgresql
@@ -151,7 +168,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-08-12T13:14:17.4345506+02:00"
+    created: "2020-08-12T17:04:06.4707293+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -166,7 +183,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-08-12T13:14:17.4349862+02:00"
+    created: "2020-08-12T17:04:06.4711991+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -174,4 +191,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nexus/nexus2-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-12T13:14:17.3972807+02:00"
+generated: "2020-08-12T17:04:06.428639+02:00"
