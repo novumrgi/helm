@@ -35,11 +35,10 @@ Complete documentation can be found in the AWX API <your_url>/api/v2/settings/ld
 ```yaml
 awx:
   ldap:
-  - enabled: false
+  - enabled: true
     subTree: false
     tls: false
-    host: ldap://ldap.example.com
-    port: 389
+    host: ldap://ldap.example.com:389
     bindDn: CN=ldap read,OU=Spezial,DC=example,DC=com
     bindPassword: awxPassword123
     userSearch: 
