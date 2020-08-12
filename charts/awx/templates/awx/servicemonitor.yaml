@@ -1,0 +1,28 @@
+{{- if and .Values.awx.metrics.enabled .Values.awx.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "awx.fullname" . }}
+  labels:
+    {{- include "awx.labels" . | nindent 4 }}
+    {{- if .Values.awx.metrics.serviceMonitor.additionalLabels }}
+    {{ toYaml .Values.awx.metrics.serviceMonitor.additionalLabels | nindent 4 }}
+    {{- end }}
+spec:
+  endpoints:
+  - port: http
+    interval: {{ .Values.awx.metrics.serviceMonitor.interval }}
+    {{- if .Values.awx.metrics.serviceMonitor.scrapeTimeout }}
+    scrapeTimeout: {{ .Values.awx.metrics.serviceMonitor.scrapeTimeout }}
+    {{- end }}
+    honorLabels: {{ .Values.awx.metrics.serviceMonitor.honorLabels }}
+    {{- if .Values.awx.metrics.serviceMonitor.relabellings }}
+    metricRelabelings:
+      {{ toYaml .Values.awx.metrics.serviceMonitor.relabellings | nindent 6 }}
+    {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    {{- include "awx.selectorLabels" . | nindent 4 }}
+{{- end }}

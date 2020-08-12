@@ -17,40 +17,21 @@ spec:
       securityContext:
         fsGroup: 0
       terminationGracePeriodSeconds: 10
-      initContainers:
-        - name: init
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          env:
-            - name: SCRIPT
-              value: &script |-
-                awx-manage migrate --noinput 
-                echo 'from django.contrib.auth.models import User; nsu = User.objects.filter(is_superuser=True).count(); exit(0 if nsu > 0 else 1)' | awx-manage shell 
-                echo "from django.contrib.auth.models import User; User.objects.create_superuser('{{ .Values.awx.adminUser }}', '{{ .Values.awx.adminMail }}', '{{ .Values.awx.adminPassword }}')" | awx-manage shell 
-                awx-manage update_password --username='{{ .Values.awx.adminUser }}' --password='{{ .Values.awx.adminPassword }}' 
-                awx-manage create_preload_data 
-
-          command: ["/bin/sh",'-c', *script]
-          volumeMounts:
-            - name: {{ include "awx.fullname" . }}-application-config
-              mountPath: "/etc/tower/settings.py"
-              subPath: settings.py
-              readOnly: true
-
-            - name: {{ include "awx.fullname" . }}-application-credentials
-              mountPath: "/etc/tower/conf.d/"
-              readOnly: true
-
-            - name: {{ include "awx.fullname" . }}-secret-key
-              mountPath: "/etc/tower/SECRET_KEY"
-              subPath: SECRET_KEY
-              readOnly: true
-      
       containers:
         - name: {{ .Chart.Name }}-web
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8052
+            - name: awx-web
+              containerPort: 8052
+          livenessProbe:
+            httpGet:
+              path: /
+              port: awx-web
+          readinessProbe:
+            httpGet:
+              path: /
+              port: awx-web
           volumeMounts:
             {{- include "awx.volumeMounts" . | nindent 12 }}
           resources:
@@ -61,10 +42,6 @@ spec:
           command:
             - /usr/bin/launch_awx_task.sh
           env:
-            - name: SUPERVISOR_WEB_CONFIG_PATH
-              value: "/etc/supervisord.conf"
-            - name: AWX_SKIP_MIGRATIONS
-              value: "1"
             - name: MY_POD_UID
               valueFrom:
                 fieldRef:
@@ -80,10 +57,10 @@ spec:
         - name: {{ include "awx.fullname" . }}-redis
           image: "{{ .Values.awx.redis.image }}:{{ .Values.awx.redis.tag }}"
           imagePullPolicy: Always
-          args: ["redis-server", "{{ .Values.awx.redis.configMount }}"]
+          args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
           volumeMounts:
             - name: {{ include "awx.fullname" . }}-redis-config
-              mountPath: "{{ .Values.awx.redis.configMount }}"
+              mountPath: "/usr/local/etc/redis/redis.conf"
               subPath: redis.conf
               readOnly: true
 

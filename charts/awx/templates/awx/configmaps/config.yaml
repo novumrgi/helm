@@ -109,6 +109,7 @@ data:
   {{ include "awx.fullname" . }}_settings: |
     import os
     import socket
+    from django_auth_ldap.config import LDAPSearch
     ADMINS = ()
 
     AWX_PROOT_ENABLED = True
@@ -119,9 +120,9 @@ data:
     SYSTEM_TASK_ABS_CPU = {{  .Values.resources.task.requests.cpu | replace "m" "" | div 1000 | mul 4 | int }}
     SYSTEM_TASK_ABS_MEM = {{ .Values.resources.task.requests.memory | replace "Mi" "" | div 100 | int }}
 
-    INSIGHTS_URL_BASE = {{ .Values.awx.insights.urlBase | quote }}
-    INSIGHTS_AGENT_MIME = {{ .Values.awx.insights.agentMime | quote }}
-    AUTOMATION_ANALYTICS_URL = {{ .Values.awx.insights.automationAnalyticsUrl | quote }}
+    INSIGHTS_URL_BASE = {{ .Values.awx.insights.urlBase | quote | default "" }}
+    INSIGHTS_AGENT_MIME = {{ .Values.awx.insights.agentMime | quote | default "" }}
+    AUTOMATION_ANALYTICS_URL = {{ .Values.awx.insights.automationAnalyticsUrl | quote | default "" }}
 
     #Autoprovisioning should replace this
     CLUSTER_HOST_ID = socket.gethostname()
@@ -138,14 +139,50 @@ data:
     JOBOUTPUT_ROOT = '/var/lib/awx/job_status'
     SECRET_KEY = open('/etc/tower/SECRET_KEY', 'rb').read().strip()
     ALLOWED_HOSTS = ['*']
-    SERVER_EMAIL = 'root@localhost'
-    DEFAULT_FROM_EMAIL = 'webmaster@localhost'
-    EMAIL_SUBJECT_PREFIX = '[AWX] '
-    EMAIL_HOST = 'localhost'
-    EMAIL_PORT = 25
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
-    EMAIL_USE_TLS = False
+
+    {{- range $index, $value := .Values.awx.ldap }}
+
+    {{- $prefix := ternary "" (printf "%d_" $index) (eq $index 0) -}}
+
+    {{- if $value.enabled }}
+    AUTH_LDAP_{{ $prefix }}SERVER_URI = "{{ $value.host }}:{{ $value.port }}"
+    AUTH_LDAP_{{ $prefix }}BIND_DN = {{ $value.bindDn | quote | default "" }}
+    AUTH_LDAP_{{ $prefix }}BIND_PASSWORD = {{ $value.bindPassword | quote | default "" }}
+    {{- if $value.subTree }}
+    AUTH_LDAP_{{ $prefix }}USER_SEARCH_SUBTREE = True
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}USER_SEARCH_SUBTREE = False
+    {{- end }}
+
+    AUTH_LDAP_{{ $prefix }}USER_SEARCH = LDAPSearch(
+      {{- range $i, $search := $value.userSearch -}}
+      {{- if $i -}},{{- end }}
+      {{ . | quote | indent 6 }}
+      {{- end }}
+    )
+
+    AUTH_LDAP_{{ $prefix }}GROUP_SEARCH = LDAPSearch(
+      {{- range $i, $search := $value.groupSearch -}}
+      {{- if $i -}},{{- end }}
+      {{ . | quote | indent 6 }}
+      {{- end }}
+    )
+
+    AUTH_LDAP_{{ $prefix }}USER_DN_TEMPLATE = {{ $value.userDnTemplate | quote | default "" }}
+    {{- if $value.tls }}
+    AUTH_LDAP_{{ $prefix }}START_TLS = True
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}START_TLS = False
+    {{- end }}
+    AUTH_LDAP_{{ $prefix }}DENY_GROUP = {{ $value.denyGroup | quote | default "" }}
+    AUTH_LDAP_{{ $prefix }}REQUIRE_GROUP = {{ $value.requireGroup | quote | default "" }}
+    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = {{ $value.userAttributeMap | indent 6 | trim  }}
+    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = {{ $value.groupTypeParams | indent 6 | trim  }}
+    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = {{ $value.flagsByGroup | indent 6 | trim  }} 
+    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = {{ $value.orgMap | indent 6 | trim  }} 
+    AUTH_LDAP_{{ $prefix }}TEAM_MAP = {{ $value.teamMap | indent 6 | trim }}
+    {{- end }}
+    {{- end }}
 
     LOGGING['handlers']['console'] = {
         '()': 'logging.StreamHandler',
@@ -183,6 +220,7 @@ data:
     {{- if hasKey .Values.awx.candlePin "verify" }}
     REDHAT_CANDLEPIN_VERIFY = "{{ .Values.awx.candlePin.verify }}"
     {{- end }}
+
     BROADCAST_WEBSOCKET_PORT = 8052
     BROADCAST_WEBSOCKET_PROTOCOL = 'http'
 
