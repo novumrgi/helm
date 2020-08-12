@@ -14,7 +14,7 @@ awx:
   adminPassword: awxPassword123
   adminMail: admin@awx.com
 
-  ldap: []
+  ldap: 
     - enabled: false
       subTree: false
       tls: false

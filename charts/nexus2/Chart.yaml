@@ -16,6 +16,10 @@ type: application
 # to the chart and its templates, including the app version.
 version: 0.1.0
 
+maintainers:
+  - name: Lucas Hahn 
+    email: lucas.hahn@novum-rgi.de
+
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 appVersion: 2.14.18-01

@@ -5,6 +5,10 @@ type: application
 version: 1.0.5
 appVersion: 1.12.2
 
+maintainers:
+  - name: Lucas Hahn 
+    email: lucas.hahn@novum-rgi.de
+    
 dependencies:
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
