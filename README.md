@@ -11,3 +11,7 @@ More Charts are going to be added.
 helm repo add novum-rgi https://novumrgi.github.io/helm/
 helm install my-release novum-rgi/<chart>
 ```
+
+# Information
+
+[Gitea helm chart](https://gitea.com/luhahn/helm-chart) has moved to [Gitea](https://www.gitea.com) https://gitea.com/luhahn/helm-chart
