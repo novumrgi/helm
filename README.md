@@ -14,4 +14,4 @@ helm install my-release novum-rgi/<chart>
 
 # Information
 
-[Gitea helm chart](https://gitea.com/luhahn/helm-chart) has moved to [Gitea](https://www.gitea.com) https://gitea.com/luhahn/helm-chart
+[Gitea helm chart](https://gitea.com/gitea/helm-chart) has moved to [Gitea](https://www.gitea.com) https://gitea.com/gitea/helm-chart
