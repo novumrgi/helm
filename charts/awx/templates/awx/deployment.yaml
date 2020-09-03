@@ -33,18 +33,18 @@ spec:
               path: /
               port: awx-web
             initialDelaySeconds: 200
-            timeoutSeconds: 1
-            periodSeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 30
             successThreshold: 1
             failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /
               port: awx-web
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 200
+            periodSeconds: 30
             successThreshold: 1
-            failureThreshold: 3
+            failureThreshold: 10
           volumeMounts:
             {{- include "awx.volumeMounts" . | nindent 12 }}
           resources:
