@@ -52,17 +52,17 @@ spec:
             httpGet:
               path: /
               port: ui-http
-            initialDelaySeconds: 200
+            initialDelaySeconds: 350
             timeoutSeconds: 1
-            periodSeconds: 10
+            periodSeconds: 20
             successThreshold: 1
             failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /
               port: ui-http
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 10
+            periodSeconds: 20
             successThreshold: 1
             failureThreshold: 3
           resources:
