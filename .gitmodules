@@ -1,3 +1,0 @@
-[submodule "charts/gitea"]
-	path = charts/gitea
-	url = https://gitea.com/luhahn/helm-chart.git
