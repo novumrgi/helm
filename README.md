@@ -1,6 +1,6 @@
-# Novum-RGI Helm Chart Library for Kubernetes
+# NOVUM-RGI Helm Chart Library for Kubernetes
 
-Helm charts for various applications, provided by [Novum-RGI](https://www.novum-rgi.com/).
+Helm charts for various applications, provided by [NOVUM-RGI](https://www.novum-rgi.com/).
 All provided charts are ready to launch via Kubernetes Helm.
 
 More Charts are going to be added.
