@@ -3,7 +3,7 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-29T13:10:28.6125915+02:00"
+    created: "2020-09-29T13:12:56.4329136+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -20,7 +20,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-29T13:10:28.6092213+02:00"
+    created: "2020-09-29T13:12:56.4301314+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -37,7 +37,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-29T13:10:28.6062194+02:00"
+    created: "2020-09-29T13:12:56.4267001+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -54,7 +54,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-29T13:10:28.6034285+02:00"
+    created: "2020-09-29T13:12:56.423789+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -69,7 +69,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-09-29T13:10:28.6172187+02:00"
+    created: "2020-09-29T13:12:56.4385694+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -113,13 +113,13 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-29T13:10:28.6269996+02:00"
+    created: "2020-09-29T13:12:56.4534625+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
       version: 5.5.0
     description: Helm chart for glowroot
-    digest: a1ecbaccd526827f9ee1638e996d7c75ab39313c6abcd27d9bf5bf9ca7b4a538
+    digest: bcda32925f174ce93b60495b4853941d8867e3ac0728868b572f01fba4b731be
     icon: https://glowroot.org/images/favicon-440x440.22b5b3f3.png
     maintainers:
     - email: lucas.hahn@novum-rgi.de
@@ -131,7 +131,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-29T13:10:28.625276+02:00"
+    created: "2020-09-29T13:12:56.4454162+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -149,7 +149,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-29T13:10:28.6235391+02:00"
+    created: "2020-09-29T13:12:56.4436156+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -167,7 +167,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-29T13:10:28.6217985+02:00"
+    created: "2020-09-29T13:12:56.4419556+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -185,7 +185,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-29T13:10:28.6199302+02:00"
+    created: "2020-09-29T13:12:56.4403273+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -200,7 +200,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-09-29T13:10:28.627477+02:00"
+    created: "2020-09-29T13:12:56.4539033+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -211,7 +211,7 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-29T13:10:28.6298444+02:00"
+    created: "2020-09-29T13:12:56.4554873+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -237,7 +237,7 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-29T13:10:28.6288323+02:00"
+    created: "2020-09-29T13:12:56.4546446+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -261,4 +261,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2020-09-29T13:10:28.5993319+02:00"
+generated: "2020-09-29T13:12:56.4209291+02:00"

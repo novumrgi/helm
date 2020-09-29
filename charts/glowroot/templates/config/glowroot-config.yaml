@@ -1,6 +1,6 @@
 {{- $anonymous := .Values.glowroot.admin.anonymousUser -}}
 apiVersion: v1
-kind: secret
+kind: Secret
 metadata:
   name: {{ include "glowroot.fullname" . }}-config
   labels:
