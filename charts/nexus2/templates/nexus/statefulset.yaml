@@ -64,7 +64,7 @@ spec:
           {{- range .Values.persistence.accessModes }}
             - {{ . | quote }}
           {{- end }}
-        storageClassName: {{ .Values.persistence.storageClass | default "standard" | quote }}
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
         resources:
           requests:
             storage: {{ .Values.persistence.size | quote }}

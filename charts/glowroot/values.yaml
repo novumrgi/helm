@@ -98,6 +98,17 @@ cassandra:
   keyspace:
 
 ingress:
+  agent:
+    enabled: false
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - glowroot-agent.local.com
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
   enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx

@@ -2,7 +2,7 @@ apiVersion: v2
 name: glowroot
 description: Helm chart for glowroot
 type: application
-version: 1.0.2
+version: 1.0.3
 appVersion: 0.13.7
 icon: https://glowroot.org/images/favicon-440x440.22b5b3f3.png
 
