@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "glowroot.fullname" . }}-collector
+  labels:
+    {{- include "glowroot.labels" . | nindent 4 }}
+  annotations:
+{{ toYaml .Values.service.collector.annotations | indent 4 }}
+spec:
+  type: {{ .Values.service.collector.type }}
+  {{- if and .Values.service.collector.loadBalancerIP (eq .Values.service.collector.type "LoadBalancer") }}
+  loadBalancerIP: {{ .Values.service.collector.loadBalancerIP }}
+  {{- end }}
+  {{- if eq .Values.service.collector.type "ClusterIP" }}
+  clusterIP: {{ .Values.service.collector.clusterIP }}
+  {{- end }}
+  {{- if .Values.service.collector.externalIPs }}
+  externalIPs:
+  {{ toYaml .Values.service.collector.externalIPs | indent 4 }}
+  {{- end }}
+  {{- if .Values.service.collector.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.collector.externalTrafficPolicy }}
+  {{- end }}
+  ports:
+  - name: collector
+    port: {{ .Values.service.collector.port }}
+    targetPort: collector-http
+    protocol: TCP
+    {{- if .Values.service.collector.nodePort }}
+    nodePort: {{ .Values.service.collector.nodePort }}
+    {{- end }}
+  selector:
+    {{- include "glowroot.selectorLabels" . | nindent 4 }}

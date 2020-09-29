@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/config/glowroot-cm.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/config/glowroot-config.yaml") . | sha256sum }}
       labels:
         {{- include "glowroot.selectorLabels" . | nindent 8 }}
     spec:
@@ -20,8 +20,8 @@ spec:
         fsGroup: 999
       volumes:
         - name: glowroot-config
-          configMap:
-            name: {{ include "glowroot.cm" . }}
+          secret:
+            secretName: {{ include "glowroot.fullname" . }}-config
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -45,7 +45,7 @@ spec:
             - name: ui-http
               containerPort: 4000
               protocol: TCP
-            - name: agent-http
+            - name: collector-http
               containerPort: 8181
               protocol: TCP
           livenessProbe:

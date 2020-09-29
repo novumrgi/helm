@@ -11,10 +11,18 @@ image:
   pullPolicy: Always
 
 service:
-  type: ClusterIP
-  port: 4000
-  agentPort: 8181
-
+  http:
+    type: ClusterIP
+    port: 4000
+  collector:
+    type: ClusterIP
+    port: 8181
+    #loadBalancerIP:
+    #nodePort:
+    #externalTrafficPolicy:
+    #externalIPs:
+    annotations:
+    
 glowroot:
   cassandra:
     # can be any 32 character hex string
