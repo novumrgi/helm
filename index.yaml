@@ -3,7 +3,7 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-28T14:26:37.2215026+02:00"
+    created: "2020-09-29T12:32:10.5062268+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -20,7 +20,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-28T14:26:37.2172558+02:00"
+    created: "2020-09-29T12:32:10.5020818+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -37,7 +37,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-28T14:26:37.2145418+02:00"
+    created: "2020-09-29T12:32:10.4994123+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -54,7 +54,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-28T14:26:37.2114181+02:00"
+    created: "2020-09-29T12:32:10.4954024+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -69,7 +69,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-09-28T14:26:37.2258431+02:00"
+    created: "2020-09-29T12:32:10.5110127+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -113,7 +113,25 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-28T14:26:37.233656+02:00"
+    created: "2020-09-29T12:32:10.5188244+02:00"
+    dependencies:
+    - name: cassandra
+      repository: https://charts.bitnami.com/bitnami
+      version: 5.5.0
+    description: Helm chart for glowroot
+    digest: 09be03295499cac0ea12f1bcfb7ae76804e93082af44a6b38407881d13011866
+    icon: https://glowroot.org/images/favicon-440x440.22b5b3f3.png
+    maintainers:
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: glowroot
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/glowroot/glowroot-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 0.13.7
+    created: "2020-09-29T12:32:10.5170694+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -131,7 +149,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-28T14:26:37.2312852+02:00"
+    created: "2020-09-29T12:32:10.5153025+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -149,7 +167,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-28T14:26:37.228708+02:00"
+    created: "2020-09-29T12:32:10.5128566+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -164,7 +182,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-09-28T14:26:37.2345094+02:00"
+    created: "2020-09-29T12:32:10.5193239+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -175,7 +193,7 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-28T14:26:37.2386896+02:00"
+    created: "2020-09-29T12:32:10.5209913+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -201,7 +219,7 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-28T14:26:37.2360809+02:00"
+    created: "2020-09-29T12:32:10.5200831+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -225,4 +243,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2020-09-28T14:26:37.2063864+02:00"
+generated: "2020-09-29T12:32:10.4924641+02:00"
