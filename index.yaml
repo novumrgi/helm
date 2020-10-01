@@ -3,7 +3,7 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-30T10:56:52.7268354+02:00"
+    created: "2020-10-01T10:19:58.4435158+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -20,7 +20,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-30T10:56:52.7231992+02:00"
+    created: "2020-10-01T10:19:58.4365714+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -37,7 +37,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-09-30T10:56:52.7202614+02:00"
+    created: "2020-10-01T10:19:58.4293879+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -54,7 +54,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-30T10:56:52.7173093+02:00"
+    created: "2020-10-01T10:19:58.421899+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -69,7 +69,54 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-09-30T10:56:52.7316191+02:00"
+    created: "2020-10-01T10:19:58.4649686+02:00"
+    dependencies:
+    - condition: gitea.cache.builtIn.enabled
+      name: memcached
+      repository: https://charts.bitnami.com/bitnami
+      version: 4.2.20
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.14.10
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.7.2
+    - condition: gitea.database.builtIn.mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.10.2
+    description: Gitea Helm chart for Kubernetes
+    digest: af133f3d05ceb6c6ad13284cbba169c3d8106be787425cb27239c63a89f91800
+    icon: https://docs.gitea.io/images/gitea.png
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: gitea
+    sources:
+    - https://github.com/go-gitea/gitea
+    - https://hub.docker.com/r/gitea/gitea/
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/gitea/gitea-1.5.4.tgz
+    version: 1.5.4
+  - apiVersion: v2
+    appVersion: 1.12.4
+    created: "2020-10-01T10:19:58.4529679+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -113,7 +160,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-30T10:56:52.7411285+02:00"
+    created: "2020-10-01T10:19:58.4931497+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -131,7 +178,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-30T10:56:52.7394051+02:00"
+    created: "2020-10-01T10:19:58.4864083+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -149,7 +196,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-30T10:56:52.7376666+02:00"
+    created: "2020-10-01T10:19:58.4802831+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -167,7 +214,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-30T10:56:52.7359401+02:00"
+    created: "2020-10-01T10:19:58.4755721+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -185,7 +232,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-09-30T10:56:52.7334393+02:00"
+    created: "2020-10-01T10:19:58.470776+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -200,7 +247,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-09-30T10:56:52.7422029+02:00"
+    created: "2020-10-01T10:19:58.5002177+02:00"
     description: A Helm chart for Kubernetes
     digest: 47e045451d7dd14a6272155f1636405e62b9ea220b5fcbf9bf296706a1e8aefd
     maintainers:
@@ -213,7 +260,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-09-30T10:56:52.7415491+02:00"
+    created: "2020-10-01T10:19:58.4969605+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -224,7 +271,7 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-30T10:56:52.7443187+02:00"
+    created: "2020-10-01T10:19:58.5101602+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -250,7 +297,7 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-09-30T10:56:52.7430143+02:00"
+    created: "2020-10-01T10:19:58.5040056+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -274,4 +321,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2020-09-30T10:56:52.7134468+02:00"
+generated: "2020-10-01T10:19:58.4144569+02:00"
