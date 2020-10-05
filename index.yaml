@@ -3,13 +3,13 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2020-10-05T16:00:51.0280589+02:00"
+    created: "2020-10-05T16:11:52.8359425+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: 9.8.1
     description: Helm chart for AWX 15.0.0
-    digest: 0cddb88dbfc62994b650ac4c7b86b07a642dde148863eca95fc76417007a0916
+    digest: 70e4e6ca691e77cd8b5810e5ce21ed49e7b9e4ba3afd7f7f3e49b8adc737014b
     maintainers:
     - email: lucas.hahn@novum-rgi.de
       name: Lucas Hahn
@@ -20,7 +20,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2020-10-05T16:00:51.0198757+02:00"
+    created: "2020-10-05T16:11:52.827732+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -37,7 +37,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-05T16:00:51.0172861+02:00"
+    created: "2020-10-05T16:11:52.8243199+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -54,7 +54,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-05T16:00:51.0136966+02:00"
+    created: "2020-10-05T16:11:52.8203205+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -71,7 +71,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-05T16:00:51.0107478+02:00"
+    created: "2020-10-05T16:11:52.8174976+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -88,7 +88,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-10-05T16:00:51.0080526+02:00"
+    created: "2020-10-05T16:11:52.8148865+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -103,7 +103,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-10-05T16:00:51.0410927+02:00"
+    created: "2020-10-05T16:11:52.8488036+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -150,7 +150,7 @@ entries:
     version: 1.5.4
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-10-05T16:00:51.0333997+02:00"
+    created: "2020-10-05T16:11:52.8412571+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -194,7 +194,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-05T16:00:51.0505824+02:00"
+    created: "2020-10-05T16:11:52.8583666+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -212,7 +212,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-05T16:00:51.0487704+02:00"
+    created: "2020-10-05T16:11:52.8566748+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -230,7 +230,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-05T16:00:51.0460149+02:00"
+    created: "2020-10-05T16:11:52.8549934+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -248,7 +248,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-05T16:00:51.0443874+02:00"
+    created: "2020-10-05T16:11:52.8521683+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -266,7 +266,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-05T16:00:51.0427883+02:00"
+    created: "2020-10-05T16:11:52.8505032+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -281,7 +281,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-10-05T16:00:51.0514661+02:00"
+    created: "2020-10-05T16:11:52.8592928+02:00"
     description: A Helm chart for Kubernetes
     digest: 47e045451d7dd14a6272155f1636405e62b9ea220b5fcbf9bf296706a1e8aefd
     maintainers:
@@ -294,7 +294,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-10-05T16:00:51.0510223+02:00"
+    created: "2020-10-05T16:11:52.8588326+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -305,7 +305,7 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-10-05T16:00:51.0531811+02:00"
+    created: "2020-10-05T16:11:52.8609982+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -331,7 +331,7 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-10-05T16:00:51.0522203+02:00"
+    created: "2020-10-05T16:11:52.8600861+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -355,4 +355,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2020-10-05T16:00:51.0039483+02:00"
+generated: "2020-10-05T16:11:52.8110669+02:00"
