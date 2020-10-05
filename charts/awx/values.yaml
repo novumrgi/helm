@@ -32,43 +32,33 @@ awx:
 #      userDnTemplate: uid=%(user)s,OU=Users,DC=example,DC=com
 #      denyGroup: CN=Disabled Users,OU=Users,DC=example,DC=com
 #      requireGroup: CN=Tower Users,OU=Users,DC=example,DC=com
-#      userAttributeMap: |
-#        {
-#          "first_name": "givenName",
-#          "last_name": "sn",
-#          "email": "mail"
-#        }
-#      groupTypeParams: |
-#        {
-#          "name_attr": "cn",
-#          "member_attr": "member"
-#        }
-#      flagsByGroup: |
-#        {
-#          "is_superuser": ["n=superusers,ou=groups,dc=website,dc=com"],
-#          "is_system_auditor": ["cn=auditors,ou=groups,dc=website,dc=com"]
-#        }
-#      orgMap: |
-#        {
-#          "LDAP Organization": {
-#            "admins": "cn=engineering_admins,ou=groups,dc=example,dc=com",
-#            "remove_admins": False,
-#            "users": [
-#              "cn=engineering,ou=groups,dc=example,dc=com",
-#              "cn=sales,ou=groups,dc=example,dc=com",
-#              "cn=it,ou=groups,dc=example,dc=com"
-#            ],
-#            "remove_users": False
-#          }
-#        }
-#      teamMap: |
-#        {
-#          "LDAP Engineering": {
-#            "organization": "LDAP Organization",
-#            "users": "cn=engineering,ou=groups,dc=example,dc=com",
-#            "remove": True
-#          }
-#        }
+#      userAttributeMap: 
+#          first_name: "givenName"
+#          last_name: "sn"
+#          email: "mail"
+#      groupTypeParams: 
+#          name_attr: "cn"
+#          member_attr: "member"
+#        
+#      flagsByGroup: 
+#          is_superuser: 
+#              - "n=superusers,ou=groups,dc=website,dc=com"]
+#          is_system_auditor: 
+#              - "cn=auditors,ou=groups,dc=website,dc=com"]
+#      orgMap: 
+#          LDAP_Organization: 
+#            admins: "cn=engineering_admins,ou=groups,dc=example,dc=com"
+#            remove_admins: False
+#            users: 
+#              - "cn=engineering,ou=groups,dc=example,dc=com"
+#              - "cn=sales,ou=groups,dc=example,dc=com"
+#              - "cn=it,ou=groups,dc=example,dc=com"
+#            remove_users: False
+#      teamMap: 
+#          LDAP_Engineering: 
+#            organization: "LDAP Organization"
+#            users: "cn=engineering,ou=groups,dc=example,dc=com"
+#            remove: True
 
 
   secretKey: qQoYusTYgMLThyQH

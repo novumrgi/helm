@@ -89,22 +89,22 @@ spec:
               - key: environment_sh
                 path: 'environment.sh'
         - name: {{ include "awx.fullname" . }}-application-config
-          configMap:
-            name: {{ include "awx.fullname" . }}-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
             items:
               - key: {{ include "awx.fullname" . }}_settings
                 path: settings.py
 
         - name: {{ include "awx.fullname" . }}-nginx-config
-          configMap:
-            name: {{ include "awx.fullname" . }}-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
             items:
               - key: {{ include "awx.fullname" . }}_nginx_conf
                 path: nginx.conf
 
         - name: {{ include "awx.fullname" . }}-redis-config
-          configMap:
-            name: {{ include "awx.fullname" . }}-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
             items:
               - key: {{ include "awx.fullname" . }}_redis_conf
                 path: redis.conf  

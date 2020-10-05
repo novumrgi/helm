@@ -1,10 +1,11 @@
 apiVersion: v1
-kind: ConfigMap
+kind: Secret
 metadata:
   name: {{ include "awx.fullname" . }}-config
   labels:
     {{- include "awx.labels" . | nindent 4 }}
-data:
+type: Opaque
+stringData:
   {{ include "awx.fullname" . }}_nginx_conf: |
     #user awx;
 
@@ -182,11 +183,11 @@ data:
     {{- end }}
     AUTH_LDAP_{{ $prefix }}DENY_GROUP = {{ $value.denyGroup | quote | default "None" }}
     AUTH_LDAP_{{ $prefix }}REQUIRE_GROUP = {{ $value.requireGroup | quote | default "None" }}
-    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = {{ $value.userAttributeMap | default "None" | indent 6 | trim  }}
-    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = {{ $value.groupTypeParams | default "None" | indent 6 | trim  }}
-    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = {{ $value.flagsByGroup | default "None" | indent 6 | trim  }} 
-    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = {{ $value.orgMap | default "None" | indent 6 | trim  }} 
-    AUTH_LDAP_{{ $prefix }}TEAM_MAP = {{ $value.teamMap | default "None" | indent 6 | trim }}
+    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = {{ $value.userAttributeMap | toJson | default "None" }}
+    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = {{ $value.groupTypeParams | toJson | default "None" }}
+    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = {{ $value.flagsByGroup | toJson | default "None" }}
+    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = {{ $value.orgMap | toJson | default "None" }}
+    AUTH_LDAP_{{ $prefix }}TEAM_MAP = {{ $value.teamMap | toJson | default "None" }}
     {{- end }}
     {{- end }}
 
