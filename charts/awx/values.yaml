@@ -33,9 +33,9 @@ awx:
 #      denyGroup: CN=Disabled Users,OU=Users,DC=example,DC=com
 #      requireGroup: CN=Tower Users,OU=Users,DC=example,DC=com
 #      userAttributeMap: 
-#          first_name: "givenName"
-#          last_name: "sn"
-#          email: "mail"
+#          "first_name": "givenName"
+#          "last_name": "sn"
+#          "email": "mail"
 #      groupTypeParams: 
 #          name_attr: "cn"
 #          member_attr: "member"

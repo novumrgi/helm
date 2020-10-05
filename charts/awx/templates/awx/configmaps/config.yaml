@@ -183,11 +183,37 @@ stringData:
     {{- end }}
     AUTH_LDAP_{{ $prefix }}DENY_GROUP = {{ $value.denyGroup | quote | default "None" }}
     AUTH_LDAP_{{ $prefix }}REQUIRE_GROUP = {{ $value.requireGroup | quote | default "None" }}
-    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = {{ $value.userAttributeMap | toJson | default "None" }}
-    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = {{ $value.groupTypeParams | toJson | default "None" }}
-    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = {{ $value.flagsByGroup | toJson | default "None" }}
-    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = {{ $value.orgMap | toJson | default "None" }}
-    AUTH_LDAP_{{ $prefix }}TEAM_MAP = {{ $value.teamMap | toJson | default "None" }}
+
+    {{- if $value.userAttributeMap }}
+    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = {{ $value.userAttributeMap | toJson }}
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}USER_ATTR_MAP = None
+    {{- end }}
+
+    {{- if $value.groupTypeParams }}
+    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = {{ $value.groupTypeParams | toJson }}
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}GROUP_TYPE_PARAMS = None
+    {{- end }}
+
+    {{- if $value.flagsByGroup }}
+    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = {{ $value.flagsByGroup | toJson }}
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}USER_FLAGS_BY_GROUP = None
+    {{- end }}
+
+    {{- if $value.orgMap }}
+    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = {{ $value.orgMap | toJson }}
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}ORGANIZATION_MAP = None
+    {{- end }}
+
+    {{- if $value.teamMap }}
+    AUTH_LDAP_{{ $prefix }}TEAM_MAP = {{ $value.teamMap | toJson }}
+    {{- else }}
+    AUTH_LDAP_{{ $prefix }}TEAM_MAP = None
+    {{- end }}
+
     {{- end }}
     {{- end }}
 
