@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: ansible/awx
-  tag: 14.0.0
+  tag: 15.0.0
   pullPolicy: Always
 
 awx:

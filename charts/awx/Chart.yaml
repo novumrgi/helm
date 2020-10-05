@@ -1,11 +1,11 @@
 apiVersion: v2
 name: awx
-description: Helm chart for AWX 14.0.0 
+description: Helm chart for AWX 15.0.0 
 
 type: application
 
-version: 0.1.2
-appVersion: 14.0.0
+version: 0.1.3
+appVersion: 15.0.0
 
 maintainers:
   - name: Lucas Hahn 
