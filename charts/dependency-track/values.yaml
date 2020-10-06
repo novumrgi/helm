@@ -1,0 +1,193 @@
+image:
+  repository: docker.io/owasp/dependency-track
+  pullPolicy: IfNotPresent
+  tag: 3.8.0
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: 
+  fsGroup: 1000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+  annotations: 
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: .local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+terminationGracePeriodSeconds: 30
+
+persistence:
+  enabled: true
+  # existingClaim: 
+  size: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClass: standard
+
+dependencyTrack:
+  database:
+    builtIn:
+      postgresql: 
+        enabled: true
+      mysql:
+        enabled: false
+      mariadb:
+        enabled: false
+
+  config:
+    alpine:
+      worker:
+        threads: 0
+        thread:
+          multiplier: 4
+
+      data:
+        directory: /data
+
+      watchdog:
+        logging:
+          interval: 0
+
+      database:
+        pool:
+          enabled: true
+          max:
+            size: 10
+            lifetime: 600000
+          idle:
+            timeout: 600000
+
+      enforce:
+        authentification: true
+        authorization: true
+
+      bcrypt:
+        rounds: 14
+
+#      ldap:
+#        enabled: false
+#        server:
+#          url: ldap://ldap.example.com:389
+#          basedn: "dc=example,dc=com"
+#          security:
+#            auth: simple
+#          bind:
+#            username:
+#            password:
+#          auth:
+#            username:
+#              format: "%s@example.com"
+#          attribute:
+#            name: userPrincipalName
+#            mail: mail
+#          groups:
+#            filter: (&(objectClass=group)(objectCategory=Group))
+#            search:
+#              filter: (&(objectClass=group)(objectCategory=Group)(cn=*{SEARCH_TERM}*))
+#          user:
+#            groups:
+#              filter: (member:1.2.840.113556.1.4.1941:={USER_DN})
+#            provisioning: false
+#          users:
+#            search:
+#              filter: (&(objectClass=user)(objectCategory=Person)(cn=*{SEARCH_TERM}*))
+#          team:
+#            synchronization: false
+        
+#        http:
+#          proxy:
+#            address: proxy.example.com
+#            port: 8888
+#            username:
+#            password:
+        
+#        cors:
+#          enabled: false
+#          allow:
+#            origin: "*"
+#            methods: GET POST PUT DELETE OPTIONS
+#            headers: Origin, Content-Type, Authorization, X-Requested-With, Content-Length, Accept, Origin, X-Api-Key, X-Total-Count, *
+#            credentials: true
+#          expose:
+#            headers: Origin, Content-Type, Authorization, X-Requested-With, Content-Length, Accept, Origin, X-Api-Key, X-Total-Count, *
+#          max:
+#            ages: 3600
+
+postgresql:
+  global:
+    postgresql:
+      postgresqlUsername: dependencyTrack
+      postgresqlPassword: dependencyTrack
+      servicePort: 5432
+  persistence:
+    size: 10Gi
+
+mysql:
+  root:
+    password: dependencyTrack
+  db:
+    user: dependencyTrack
+    password: dependencyTrack
+  service:
+    port: 3306
+  persistence:
+    size: 10Gi
+
+mariadb:
+  db:
+    user: dependencyTrack
+    password: dependencyTrack
+  service:
+    port: 3306
+  master:
+    persistence:
+      size: 10Gi
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

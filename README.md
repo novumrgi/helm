@@ -20,6 +20,6 @@ helm install my-release novum-rgi/<chart>
 
 ## Charts
 
-1. [AWX](charts/awx/README.md) in Version 14.0.0
+1. [AWX](charts/awx/README.md) in Version 15.0.0
 2. [Glowroot](charts/glowroot/README.md) in Version 0.13.7
 3. [Nexus2](charts/nexus2/README.md) oss latest

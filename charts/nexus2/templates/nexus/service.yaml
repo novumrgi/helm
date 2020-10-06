@@ -6,7 +6,9 @@ metadata:
     {{- include "nexus2.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if eq .Values.service.type "ClusterIP" }}
   clusterIP: None
+  {{- end }}
   ports:
     - port: 80
       targetPort: {{ .Values.service.port }}
