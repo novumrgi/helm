@@ -91,7 +91,7 @@ spec:
   {{- else if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
   volumeClaimTemplates:
     - metadata:
-        name: {{ include "dependency-track.fullname" . }}-data
+        name: data
       spec:
         accessModes:
           {{- range .Values.persistence.accessModes }}

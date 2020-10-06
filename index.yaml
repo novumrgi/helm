@@ -3,7 +3,7 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2020-10-06T16:12:37.1445083+02:00"
+    created: "2020-10-06T16:32:45.3423013+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -20,7 +20,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2020-10-06T16:12:37.1407145+02:00"
+    created: "2020-10-06T16:32:45.3389418+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -37,7 +37,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-06T16:12:37.1372615+02:00"
+    created: "2020-10-06T16:32:45.3357557+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -54,7 +54,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-06T16:12:37.1337703+02:00"
+    created: "2020-10-06T16:32:45.333589+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -71,7 +71,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2020-10-06T16:12:37.1309406+02:00"
+    created: "2020-10-06T16:32:45.3312913+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -88,7 +88,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-10-06T16:12:37.1278127+02:00"
+    created: "2020-10-06T16:32:45.3284365+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -103,7 +103,37 @@ entries:
   dependency-track:
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1824776+02:00"
+    created: "2020-10-06T16:32:45.386346+02:00"
+    dependencies:
+    - condition: dependencyTrack.database.builtIn.mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.14.10
+    - condition: dependencyTrack.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.7.2
+    - condition: dependencyTrack.database.builtIn.mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.10.2
+    description: Dependency Track helm chart
+    digest: 9bca0316ceba7245732237a9da715316c294b16626b0ed1a1dfc3e3f9c5c2d0f
+    maintainers:
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: dependency-track
+    sources:
+    - https://github.com/novumrgi/helm
+    - https://github.com/DependencyTrack/dependency-track
+    - https://hub.docker.com/r/owasp/dependency-track
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/dependency-track/dependency-track-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 3.8.0
+    created: "2020-10-06T16:32:45.3800065+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -133,7 +163,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1760744+02:00"
+    created: "2020-10-06T16:32:45.3736733+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -163,7 +193,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1703217+02:00"
+    created: "2020-10-06T16:32:45.3669923+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -193,7 +223,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1640593+02:00"
+    created: "2020-10-06T16:32:45.3614417+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -223,7 +253,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1577142+02:00"
+    created: "2020-10-06T16:32:45.3550163+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -253,7 +283,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2020-10-06T16:12:37.1514131+02:00"
+    created: "2020-10-06T16:32:45.348656+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -284,7 +314,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-10-06T16:12:37.1945567+02:00"
+    created: "2020-10-06T16:32:45.3977546+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -331,7 +361,7 @@ entries:
     version: 1.5.4
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2020-10-06T16:12:37.1873506+02:00"
+    created: "2020-10-06T16:32:45.3905911+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -375,7 +405,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-06T16:12:37.2027603+02:00"
+    created: "2020-10-06T16:32:45.4059578+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -393,7 +423,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-06T16:12:37.2005475+02:00"
+    created: "2020-10-06T16:32:45.4044181+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -411,7 +441,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-06T16:12:37.1990563+02:00"
+    created: "2020-10-06T16:32:45.4028813+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -429,7 +459,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-06T16:12:37.1975842+02:00"
+    created: "2020-10-06T16:32:45.4007442+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -447,7 +477,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2020-10-06T16:12:37.1961128+02:00"
+    created: "2020-10-06T16:32:45.3993003+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -462,7 +492,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-10-06T16:12:37.2033264+02:00"
+    created: "2020-10-06T16:32:45.4065212+02:00"
     description: A Helm chart for Kubernetes
     digest: 47e045451d7dd14a6272155f1636405e62b9ea220b5fcbf9bf296706a1e8aefd
     maintainers:
@@ -475,7 +505,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2020-10-06T16:12:37.2030479+02:00"
+    created: "2020-10-06T16:32:45.4062386+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -486,7 +516,7 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-10-06T16:12:37.2045897+02:00"
+    created: "2020-10-06T16:32:45.407762+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -512,7 +542,7 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2020-10-06T16:12:37.2039154+02:00"
+    created: "2020-10-06T16:32:45.4071027+02:00"
     description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
       Kubernetes. You can use it to quickly & easily deploy shared storage that works
       almost anywhere.
@@ -536,4 +566,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2020-10-06T16:12:37.1246826+02:00"
+generated: "2020-10-06T16:32:45.3259265+02:00"
