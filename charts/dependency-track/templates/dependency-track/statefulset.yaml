@@ -37,6 +37,8 @@ spec:
           env:
             - name: ALPINE_APPLICATION_PROPERTIES
               value: /config/application.properties
+            - name: JAVA_OPTIONS
+              value: -XX:MaxRAMPercentage=90.0 -Dalpine.application.properties=/config/application.properties
           ports:
             - name: http
               containerPort: 8080
@@ -45,17 +47,17 @@ spec:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 50
+            initialDelaySeconds: 30
             timeoutSeconds: 1
-            periodSeconds: 10
+            periodSeconds: 30
             successThreshold: 1
             failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 30
+            periodSeconds: 30
             successThreshold: 1
             failureThreshold: 3
           resources:

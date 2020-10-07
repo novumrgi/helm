@@ -67,10 +67,6 @@ dependencyTrack:
     builtIn:
       postgresql: 
         enabled: true
-      mysql:
-        enabled: false
-      mariadb:
-        enabled: false
 
   config:
     alpine:
@@ -154,33 +150,12 @@ dependencyTrack:
 postgresql:
   global:
     postgresql:
-      postgresqlUsername: dependencyTrack
-      postgresqlPassword: dependencyTrack
+      postgresqlUsername: depTrack
+      postgresqlPassword: depTrack
+      postgresqlDatabase: depTrack
       servicePort: 5432
   persistence:
     size: 10Gi
-
-mysql:
-  root:
-    password: dependencyTrack
-  db:
-    user: dependencyTrack
-    password: dependencyTrack
-  service:
-    port: 3306
-  persistence:
-    size: 10Gi
-
-mariadb:
-  db:
-    user: dependencyTrack
-    password: dependencyTrack
-  service:
-    port: 3306
-  master:
-    persistence:
-      size: 10Gi
-
 
 nodeSelector: {}
 

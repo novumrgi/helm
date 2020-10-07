@@ -80,9 +80,3 @@ Create the name of the service account to use
 {{- define "postgresql.dns" -}}
 {{- printf "%s-postgresql.%s.svc.cluster.local:%g" .Release.Name .Release.Namespace .Values.postgresql.global.postgresql.servicePort -}}
 {{- end -}}
-{{- define "mysql.dns" -}}
-{{- printf "%s-mysql.%s.svc.cluster.local:%g" .Release.Name .Release.Namespace .Values.mysql.service.port | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- define "mariadb.dns" -}}
-{{- printf "%s-mariadb.%s.svc.cluster.local:%g" .Release.Name .Release.Namespace .Values.mysql.service.port | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
