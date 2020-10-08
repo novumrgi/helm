@@ -39,6 +39,8 @@ spec:
               value: /config/application.properties
             - name: JAVA_OPTIONS
               value: -XX:MaxRAMPercentage=90.0 -Dalpine.application.properties=/config/application.properties
+            - name: LOGGING_LEVEL
+              value: {{ .Values.dependencyTrack.logging | quote }}
           ports:
             - name: http
               containerPort: 8080

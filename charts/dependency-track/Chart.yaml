@@ -2,9 +2,18 @@ apiVersion: v2
 name: dependency-track
 description: Dependency Track helm chart
 type: application
-version: 0.1.7
+version: 0.1.8
 appVersion: 3.8.0
+home: https://dependencytrack.org/
+icon: https://github.com/DependencyTrack/branding/blob/master/dt-logo-black-text.svg
 
+keywords:
+ - security
+ - dependency
+ - dependency-track
+ - OWASP
+ - Supply Chain Component Analysis
+ 
 sources:
   - https://github.com/novumrgi/helm
   - https://github.com/DependencyTrack/dependency-track

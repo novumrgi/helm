@@ -63,6 +63,7 @@ persistence:
   storageClass: longhorn
 
 dependencyTrack:
+  logging: DEBUG
   database:
     builtIn:
       postgresql: 
