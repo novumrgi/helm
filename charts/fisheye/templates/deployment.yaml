@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fisheye.fullname" . }}
+  labels:
+    {{- include "fisheye.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "fisheye.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "fisheye.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "fisheye.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: FISHEYE_OPTS
+              value: "-Dfecru.configure.from.env.variables=true"
+            {{- if .Values.fisheye.config.license }}
+            - name: FECRU_CONFIGURE_LICENSE_FISHEYE
+              value: {{ .Values.fisheye.config.license }}
+            {{- end }}
+            - name: FECRU_CONFIGURE_ADMIN_PASSWORD
+              value: {{ .Values.fisheye.admin.password }}
+            - name: FECRU_CONFIGURE_DB_TYPE
+              value: postgresql
+            - name: FECRU_CONFIGURE_DB_HOST
+              value: {{ .Values.fisheye.database.builtIn.postgresql.enabled | ( include "postgresql.dns" . ) .Values.fisheye.database.host }}
+            - name: FECRU_CONFIGURE_DB_PORT
+              value: {{ .Values.fisheye.database.builtIn.postgresql.enabled | .Values.postgresql.global.postgresql.servicePort .Values.fisheye.database.port }} 
+            - name: FECRU_CONFIGURE_DB_USER
+              value: {{ .Values.fisheye.database.builtIn.postgresql.enabled | .Values.postgresql.global.postgresql.postgresqlUsername .Values.fisheye.database.user }} 
+            - name: FECRU_CONFIGURE_DB_PASSWORD
+              value: {{ .Values.fisheye.database.builtIn.postgresql.enabled | .Values.postgresql.global.postgresql.postgresqlPassword .Values.fisheye.database.password }} 
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
