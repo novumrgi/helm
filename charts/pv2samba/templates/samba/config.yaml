@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "pv2samba.fullname" . }}
+  labels:
+    {{- include "pv2samba.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  smb.conf: |-
+    {{- range .Values.persistence.externalClaims -}}
+      {{- if not (hasKey $.Values.samba.config .) -}}
+        {{- $_ := set $.Values.samba.config . dict -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* autogenerate smb.conf */ -}}
+    {{- range $key, $value := .Values.samba.config  }}
+    {{- if kindIs "map" $value }}
+    {{- if gt (len $value) 0 }}
+    [{{ $key }}]
+    {{- range $n_key, $n_value := $value }}
+    {{ $n_key }} = {{ $n_value }}
+    {{- end }}
+    {{- end }}
+    {{- else }}
+    {{ $key }} = {{ $value }}
+    {{- end }}
+    {{- end }}
