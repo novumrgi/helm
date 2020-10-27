@@ -4,7 +4,7 @@ description: Helm chart for AWX 15.0.0
 
 type: application
 
-version: 0.1.4
+version: 0.1.5
 appVersion: 15.0.0
 
 maintainers:
@@ -15,3 +15,4 @@ dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
     version: 9.8.1
+    condition: awx.database.builtIn.enabled
