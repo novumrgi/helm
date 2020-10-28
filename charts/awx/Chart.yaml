@@ -4,7 +4,7 @@ description: Helm chart for AWX 15.0.0
 
 type: application
 
-version: 0.1.5
+version: 0.1.6
 appVersion: 15.0.0
 
 maintainers:
