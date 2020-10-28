@@ -14,6 +14,11 @@ awx:
   adminPassword: awxPassword123
   adminMail: admin@awx.com
 
+  settings:
+    # will override the auto generated value from resources
+    systemTaskAbsCpu:
+    # will override the auto generated value from resources
+    systemTaskAbsMem:
   ldap: []
 #    - enabled: false
 #      subTree: false
@@ -155,7 +160,8 @@ resources:
   task: 
     requests: 
       cpu: 1500m
-      # Do not use anything else but Mi
+      # Either set the task absMem value in the awx.settings
+      # or do not use anything else but Mi for autogeneration
       memory: 2048Mi
   # limits:
   #   cpu: 100m

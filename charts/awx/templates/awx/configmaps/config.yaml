@@ -118,8 +118,8 @@ stringData:
     # Automatically deprovision pods that go offline
     AWX_AUTO_DEPROVISION_INSTANCES = True
 
-    SYSTEM_TASK_ABS_CPU = {{  .Values.resources.task.requests.cpu | replace "m" "" | div 1000 | mul 4 | int }}
-    SYSTEM_TASK_ABS_MEM = {{ .Values.resources.task.requests.memory | replace "Mi" "" | div 100 | int }}
+    SYSTEM_TASK_ABS_CPU = {{ include "awx.taskAbsCpu" . }}
+    SYSTEM_TASK_ABS_MEM = {{ include "awx.taskAbsMem" . }}
 
     INSIGHTS_URL_BASE = {{ .Values.awx.insights.urlBase | quote | default "" }}
     INSIGHTS_AGENT_MIME = {{ .Values.awx.insights.agentMime | quote | default "" }}

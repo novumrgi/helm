@@ -116,3 +116,21 @@ Create the name of the service account to use
 - name: rsyslog-dir
   mountPath: "/var/lib/awx/rsyslog"
 {{- end -}}
+
+{{- define "awx.taskAbsCpu" -}}
+  {{- if .Values.awx.settings.systemTaskAbsCpu }}
+    {{- .Values.awx.settings.systemTaskAbsCpu }}
+  {{- else }}
+    {{- $cpu := .Values.resources.task.requests.cpu | replace "m" "" -}}
+    {{- div $cpu 1000 | mul 4 | int }}
+  {{- end }}
+{{- end -}}
+
+{{- define "awx.taskAbsMem" -}}
+  {{- if .Values.awx.settings.systemTaskAbsMem }}
+    {{- .Values.awx.settings.systemTaskAbsMem }}
+  {{- else }}
+    {{- $mem := .Values.resources.task.requests.memory | replace "Mi" "" }}
+    {{- div $mem 100 | int }}
+  {{- end }}
+{{- end -}}
