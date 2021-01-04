@@ -17,7 +17,7 @@ spec:
         {{- include "glowroot.selectorLabels" . | nindent 8 }}
     spec:
       securityContext:
-        fsGroup: 999
+        {{- toYaml .Values.securityContext | nindent 8 }}
       volumes:
         - name: glowroot-config
           secret:
@@ -25,7 +25,7 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
+            {{- toYaml .Values.glowroot.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:

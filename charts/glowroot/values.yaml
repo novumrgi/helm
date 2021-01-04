@@ -22,8 +22,12 @@ service:
     #externalTrafficPolicy:
     #externalIPs:
     annotations:
-    
+
+securityContext:
+  fsGroup: 999
+
 glowroot:
+  #securityContext:
   cassandra:
     # can be any 32 character hex string
     symmetricEncryptionKey: f8b62a6a4bd37abcc95e2f15d69c7b91
@@ -99,6 +103,7 @@ glowroot:
 
 
 cassandra:
+  enabled: true
   # see cassandra helm chart for more detailed description
   dbUser:
     user: cassandra
