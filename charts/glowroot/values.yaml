@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   # quick fix patched image till official glowroot image works again
   repository: novumrgi/glowroot-central
-  tag: 0.13.7
+  tag: latest
   pullPolicy: Always
 
 service:
@@ -27,6 +27,9 @@ securityContext:
   fsGroup: 999
 
 glowroot:
+#  extraInitConfig: |
+#    chmod a+rwx /usr/share/glowroot-central
+
   #securityContext:
   cassandra:
     # can be any 32 character hex string
