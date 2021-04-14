@@ -20,6 +20,7 @@ helm install my-release novum-rgi/<chart>
 
 ## Charts
 
-1. [AWX](charts/awx/README.md) in Version 15.0.0
+1. [AWX](charts/awx/README.md) in Version 15.0.0 -> Deprecated Please use the [AWX Operator](https://github.com/ansible/awx-operator)
 2. [Glowroot](charts/glowroot/README.md) in Version 0.13.7
 3. [Nexus2](charts/nexus2/README.md) oss latest
+4. [Dependency Track](charts/dependency-track/README.md) latest
