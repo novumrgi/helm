@@ -1,0 +1,176 @@
+# Default values for awx.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ansible/awx
+  tag: 15.0.0
+  pullPolicy: Always
+
+awx:
+  adminUser: admin
+  adminPassword: awxPassword123
+  adminMail: admin@awx.com
+
+  settings:
+    # will override the auto generated value from resources
+    systemTaskAbsCpu:
+    # will override the auto generated value from resources
+    systemTaskAbsMem:
+  ldap: []
+#    - enabled: false
+#      subTree: false
+#      tls: false
+#      host: ldap://ldap.example.com:389
+#      bindDn: CN=ldap read,OU=Spezial,DC=example,DC=com
+#      bindPassword: awxPassword123
+#      userSearch: 
+#        - "OU=Users,DC=northamerica,DC=acme,DC=com"
+#        - "SCOPE_SUBTREE"
+#        - "(sAMAccountName=%(user)s)"
+#      groupSearch: 
+#        - "dc=example,dc=com"
+#        - "SCOPE_SUBTREE"
+#        - "(objectClass=group)"
+#      userDnTemplate: uid=%(user)s,OU=Users,DC=example,DC=com
+#      denyGroup: CN=Disabled Users,OU=Users,DC=example,DC=com
+#      requireGroup: CN=Tower Users,OU=Users,DC=example,DC=com
+#      userAttributeMap: |
+#        {
+#          "first_name": "givenName",
+#          "last_name": "sn",
+#          "email": "mail"
+#        }
+#      groupTypeParams: |
+#        {
+#          "name_attr": "cn",
+#          "member_attr": "member"
+#        }
+#      flagsByGroup: |
+#        {
+#          "is_superuser": ["n=superusers,ou=groups,dc=website,dc=com"],
+#          "is_system_auditor": ["cn=auditors,ou=groups,dc=website,dc=com"]
+#        }
+#      orgMap: |
+#        {
+#          "LDAP Organization": {
+#            "admins": "cn=engineering_admins,ou=groups,dc=example,dc=com",
+#            "remove_admins": False,
+#            "users": [
+#              "cn=engineering,ou=groups,dc=example,dc=com",
+#              "cn=sales,ou=groups,dc=example,dc=com",
+#              "cn=it,ou=groups,dc=example,dc=com"
+#            ],
+#            "remove_users": False
+#          }
+#        }
+#      teamMap: |
+#        {
+#          "LDAP Engineering": {
+#            "organization": "LDAP Organization",
+#            "users": "cn=engineering,ou=groups,dc=example,dc=com",
+#            "remove": True
+#          }
+#        }
+
+
+  secretKey: qQoYusTYgMLThyQH
+
+  metrics:
+    enabled: true
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9090"
+    
+    ## experimental
+    serviceMonitor:
+      enabled: false
+      scrapeTimeout: 30s
+      interval: 30s
+      relabellings:
+      honorLabels: false
+      additionalLabels: {}
+
+  redis:
+    image: redis
+    tag: latest
+
+  database:
+    builtIn:
+      enabled: true
+    sslMode: prefer
+#    username:
+#    name:
+#    password:
+#    host:
+#    port:
+
+  insights:
+    urlBase: https://awx.example.com
+    agentMime: application/example
+    automationAnalyticsUrl: https://awx.example.com
+
+  containerGroupDefaultImage: ansible/ansible-runner
+
+  candlePin: {}
+    #host:
+    #verify:    
+
+postgresql:
+  global:
+    postgresql:
+      postgresqlDatabase: awx
+      postgresqlUsername: awx
+      postgresqlPassword: awx
+      servicePort: 5432
+  persistence:
+    size: 20Gi
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 8052
+  #annotations: {}
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - awx.example.com
+  tls: []
+  #  - secretName: awx-example-tls
+  #    hosts:
+  #      - awx.example.com
+
+resources: 
+  web: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  task: 
+    requests: 
+      cpu: 1500m
+      # Either set the task absMem value in the awx.settings
+      # or do not use anything else but Mi for autogeneration
+      memory: 2048Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  redis: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi

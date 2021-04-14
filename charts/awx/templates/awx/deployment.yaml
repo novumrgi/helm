@@ -1,0 +1,157 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "awx.fullname" . }}
+  labels:
+    {{- include "awx.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "awx.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/config.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/launch.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/awx/configmaps/supervisor.yaml") . | sha256sum }}
+      labels:
+        {{- include "awx.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 0
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: {{ .Chart.Name }}-web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: awx-web
+              containerPort: 8052
+          livenessProbe:
+            httpGet:
+              path: /
+              port: awx-web
+            initialDelaySeconds: 200
+            timeoutSeconds: 2
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: awx-web
+            initialDelaySeconds: 200
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 10
+          volumeMounts:
+            {{- include "awx.volumeMounts" . | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources.web | nindent 12 }}
+        - name: {{ .Chart.Name }}-task
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /usr/bin/launch_awx_task.sh
+          env:
+            - name: MY_POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          volumeMounts:
+            {{- include "awx.volumeMounts" . | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources.task | nindent 12 }}
+        - name: {{ include "awx.fullname" . }}-redis
+          image: "{{ .Values.awx.redis.image }}:{{ .Values.awx.redis.tag }}"
+          imagePullPolicy: Always
+          args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+          volumeMounts:
+            - name: {{ include "awx.fullname" . }}-redis-config
+              mountPath: "/usr/local/etc/redis/redis.conf"
+              subPath: redis.conf
+              readOnly: true
+
+            - name: {{ include "awx.fullname" . }}-redis-socket
+              mountPath: "/var/run/redis"
+      volumes:
+        - name: {{ include "awx.fullname" . }}-application-credentials
+          secret:
+            secretName: "{{ include "awx.fullname" . }}-secrets"
+            items:
+              - key: credentials_py
+                path: 'credentials.py'
+              - key: environment_sh
+                path: 'environment.sh'
+        - name: {{ include "awx.fullname" . }}-application-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
+            items:
+              - key: {{ include "awx.fullname" . }}_settings
+                path: settings.py
+
+        - name: {{ include "awx.fullname" . }}-nginx-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
+            items:
+              - key: {{ include "awx.fullname" . }}_nginx_conf
+                path: nginx.conf
+
+        - name: {{ include "awx.fullname" . }}-redis-config
+          secret:
+            secretName: {{ include "awx.fullname" . }}-config
+            items:
+              - key: {{ include "awx.fullname" . }}_redis_conf
+                path: redis.conf  
+
+        - name: {{ include "awx.fullname" . }}-launch-awx-web
+          configMap:
+            name: {{ include "awx.fullname" . }}-launch-awx
+            items:
+              - key: launch-awx-web
+                path: 'launch_awx.sh'
+            defaultMode: 0755
+
+        - name: {{ include "awx.fullname" . }}-launch-awx-task
+          configMap:
+            name: {{ include "awx.fullname" . }}-launch-awx
+            items:
+              - key: launch-awx-task
+                path: 'launch_awx_task.sh'
+            defaultMode: 0755
+
+        - name: {{ include "awx.fullname" . }}-supervisor-web-config
+          configMap:
+            name: {{ include "awx.fullname" . }}-supervisor-config
+            items:
+              - key: supervisor-web-config
+                path: 'supervisor.conf'
+
+        - name: {{ include "awx.fullname" . }}-supervisor-task-config
+          configMap:
+            name: {{ include "awx.fullname" . }}-supervisor-config
+            items:
+              - key: supervisor-task-config
+                path: 'supervisor_task.conf'
+        
+        - name: {{ include "awx.fullname" . }}-secret-key
+          secret:
+            secretName: "{{ include "awx.fullname" . }}-secrets"
+            items:
+              - key: secret_key
+                path: SECRET_KEY
+
+        - name: supervisor-socket
+          emptyDir: {}
+        - name: rsyslog-socket
+          emptyDir: {}
+        - name: rsyslog-dir
+          emptyDir: {}
+        - name: {{ include "awx.fullname" . }}-redis-socket
+          emptyDir: {}
+        
