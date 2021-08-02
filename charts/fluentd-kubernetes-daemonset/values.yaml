@@ -1,0 +1,10 @@
+image:
+  repository: fluent/fluentd-kubernetes-daemonset
+  tag: v1-debian-graylog
+  pullPolicy: IfNotPresent
+
+env:
+  FLUENT_GRAYLOG_HOST: ""
+  FLUENT_GRAYLOG_PORT: ""
+  FLUENT_GRAYLOG_PROTOCOL: "udp"
+  FLUENT_SYSTEMD_CONF: "disable"

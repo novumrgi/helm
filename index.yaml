@@ -3,7 +3,7 @@ entries:
   awx:
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2021-06-21T11:40:52.332501483+02:00"
+    created: "2021-08-02T10:06:49.463959069+02:00"
     dependencies:
     - condition: awx.database.builtIn.enabled
       name: postgresql
@@ -21,7 +21,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2021-06-21T11:40:52.329098872+02:00"
+    created: "2021-08-02T10:06:49.460323367+02:00"
     dependencies:
     - condition: awx.database.builtIn.enabled
       name: postgresql
@@ -39,7 +39,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2021-06-21T11:40:52.325069577+02:00"
+    created: "2021-08-02T10:06:49.455322474+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -56,7 +56,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 15.0.0
-    created: "2021-06-21T11:40:52.321622631+02:00"
+    created: "2021-08-02T10:06:49.45154839+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -73,7 +73,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2021-06-21T11:40:52.319162332+02:00"
+    created: "2021-08-02T10:06:49.447216778+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -90,7 +90,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2021-06-21T11:40:52.316232564+02:00"
+    created: "2021-08-02T10:06:49.444675867+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -107,7 +107,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 14.0.0
-    created: "2021-06-21T11:40:52.312962113+02:00"
+    created: "2021-08-02T10:06:49.441928636+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -124,7 +124,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-06-21T11:40:52.309999222+02:00"
+    created: "2021-08-02T10:06:49.439298586+02:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -139,7 +139,7 @@ entries:
   dependency-track:
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.387574906+02:00"
+    created: "2021-08-02T10:06:49.52263339+02:00"
     dependencies:
     - condition: dependencyTrack.database.builtIn.postgresql.enabled
       name: postgresql
@@ -169,7 +169,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.384165642+02:00"
+    created: "2021-08-02T10:06:49.519245854+02:00"
     dependencies:
     - condition: dependencyTrack.database.builtIn.postgresql.enabled
       name: postgresql
@@ -191,7 +191,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.379110488+02:00"
+    created: "2021-08-02T10:06:49.514405715+02:00"
     dependencies:
     - condition: dependencyTrack.database.builtIn.mysql.enabled
       name: mysql
@@ -221,7 +221,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.373201099+02:00"
+    created: "2021-08-02T10:06:49.50808594+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -251,7 +251,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.36605927+02:00"
+    created: "2021-08-02T10:06:49.50019598+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -281,7 +281,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.360135143+02:00"
+    created: "2021-08-02T10:06:49.492914526+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -311,7 +311,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.353626932+02:00"
+    created: "2021-08-02T10:06:49.486830596+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -341,7 +341,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.346332866+02:00"
+    created: "2021-08-02T10:06:49.479187831+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -371,7 +371,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 3.8.0
-    created: "2021-06-21T11:40:52.340235541+02:00"
+    created: "2021-08-02T10:06:49.471957673+02:00"
     dependencies:
     - condition: gitea.database.builtIn.mysql.enabled
       name: mysql
@@ -399,10 +399,21 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/dependency-track/dependency-track-0.1.0.tgz
     version: 0.1.0
+  fluentd-kubernetes-daemonset:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-08-02T10:06:49.522820803+02:00"
+    description: A Helm chart for Kubernetes
+    digest: a6efa49e8e0f7779ffbbc5f92a08f4296d98f8df5fa6da197dbf6faf4ff18a82
+    name: fluentd-kubernetes-daemonset
+    type: application
+    urls:
+    - https://novumrgi.github.io/helm/fluentd-daemonset/fluentd-kubernetes-daemonset-0.1.0.tgz
+    version: 0.1.0
   gitea:
   - apiVersion: v2
     appVersion: 1.13.0
-    created: "2021-06-21T11:40:52.440552327+02:00"
+    created: "2021-08-02T10:06:49.571749+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -450,7 +461,7 @@ entries:
     version: 2.1.3
   - apiVersion: v2
     appVersion: 1.13.0
-    created: "2021-06-21T11:40:52.430153613+02:00"
+    created: "2021-08-02T10:06:49.56179169+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -498,7 +509,7 @@ entries:
     version: 2.1.2
   - apiVersion: v2
     appVersion: 1.13.0
-    created: "2021-06-21T11:40:52.418908488+02:00"
+    created: "2021-08-02T10:06:49.552637009+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -546,7 +557,7 @@ entries:
     version: 2.1.1
   - apiVersion: v2
     appVersion: 1.13.0
-    created: "2021-06-21T11:40:52.408259751+02:00"
+    created: "2021-08-02T10:06:49.543392901+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -594,7 +605,7 @@ entries:
     version: 2.1.0
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2021-06-21T11:40:52.399903688+02:00"
+    created: "2021-08-02T10:06:49.535032827+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -641,7 +652,7 @@ entries:
     version: 1.5.4
   - apiVersion: v2
     appVersion: 1.12.4
-    created: "2021-06-21T11:40:52.392025117+02:00"
+    created: "2021-08-02T10:06:49.527917925+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -684,7 +695,7 @@ entries:
     version: 1.5.1
   - apiVersion: v2
     appVersion: 1.14.2
-    created: "2021-06-21T11:40:52.45059605+02:00"
+    created: "2021-08-02T10:06:49.5806481+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -732,7 +743,7 @@ entries:
     version: 0.0.0
   - apiVersion: v2
     appVersion: 1.14.2
-    created: "2021-06-21T11:40:52.458885548+02:00"
+    created: "2021-08-02T10:06:49.589987496+02:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -781,7 +792,7 @@ entries:
   glowroot:
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.475334327+02:00"
+    created: "2021-08-02T10:06:49.605059775+02:00"
     dependencies:
     - condition: cassandra.enabled
       name: cassandra
@@ -800,7 +811,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.470582076+02:00"
+    created: "2021-08-02T10:06:49.602175246+02:00"
     dependencies:
     - condition: cassandra.enabled
       name: cassandra
@@ -819,7 +830,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.467545817+02:00"
+    created: "2021-08-02T10:06:49.598710033+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -837,7 +848,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.465914864+02:00"
+    created: "2021-08-02T10:06:49.59694937+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -855,7 +866,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.46421456+02:00"
+    created: "2021-08-02T10:06:49.59528654+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -873,7 +884,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.462561586+02:00"
+    created: "2021-08-02T10:06:49.593618801+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -891,7 +902,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.13.7
-    created: "2021-06-21T11:40:52.460444314+02:00"
+    created: "2021-08-02T10:06:49.59198709+02:00"
     dependencies:
     - name: cassandra
       repository: https://charts.bitnami.com/bitnami
@@ -906,7 +917,7 @@ entries:
   nexus2:
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2021-06-21T11:40:52.475955151+02:00"
+    created: "2021-08-02T10:06:49.605888764+02:00"
     description: A Helm chart for Kubernetes
     digest: 47e045451d7dd14a6272155f1636405e62b9ea220b5fcbf9bf296706a1e8aefd
     maintainers:
@@ -919,7 +930,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.14.18-01
-    created: "2021-06-21T11:40:52.475638282+02:00"
+    created: "2021-08-02T10:06:49.605491047+02:00"
     description: A Helm chart for Kubernetes
     digest: d3a4d0c4b37f6ae4f7a94bae4b50950baa146c425d47558c9f3117fd166b0ec6
     name: nexus2
@@ -930,8 +941,10 @@ entries:
   nfs-server-provisioner:
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2021-06-21T11:40:52.477303961+02:00"
-    description: nfs-server-provisioner is an out-of-tree dynamic provisioner for Kubernetes. You can use it to quickly & easily deploy shared storage that works almost anywhere.
+    created: "2021-08-02T10:06:49.607536546+02:00"
+    description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
+      Kubernetes. You can use it to quickly & easily deploy shared storage that works
+      almost anywhere.
     digest: 7585bebce569eb09b64aeefe69bbcd10503ae0ba370de5d68251fa6fd739a959
     home: https://github.com/kubernetes/charts/tree/master/stable/nfs-server-provisioner
     keywords:
@@ -954,8 +967,10 @@ entries:
     version: 1.1.2
   - apiVersion: v1
     appVersion: 2.3.0
-    created: "2021-06-21T11:40:52.476574341+02:00"
-    description: nfs-server-provisioner is an out-of-tree dynamic provisioner for Kubernetes. You can use it to quickly & easily deploy shared storage that works almost anywhere.
+    created: "2021-08-02T10:06:49.606648866+02:00"
+    description: nfs-server-provisioner is an out-of-tree dynamic provisioner for
+      Kubernetes. You can use it to quickly & easily deploy shared storage that works
+      almost anywhere.
     digest: 1a9e04bb06db6b5a651a1c7d2bf246936e11e1f9c24c00b3715eb84568e345f3
     home: https://github.com/kubernetes/charts/tree/master/stable/nfs-server-provisioner
     keywords:
@@ -976,4 +991,4 @@ entries:
     urls:
     - https://novumrgi.github.io/helm/nfs/nfs-server-provisioner-1.1.1.tgz
     version: 1.1.1
-generated: "2021-06-21T11:40:52.307043105+02:00"
+generated: "2021-08-02T10:06:49.432982719+02:00"
