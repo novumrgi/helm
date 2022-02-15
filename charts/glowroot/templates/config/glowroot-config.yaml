@@ -91,7 +91,6 @@ stringData:
         "host": {{ .Values.glowroot.admin.ldap.connection.host | quote }},
         "port": {{ .Values.glowroot.admin.ldap.connection.port }},
         "ssl": {{ .Values.glowroot.admin.ldap.connection.ssl }},
-        "follow": {{ .Values.glowroot.admin.ldap.connection.follow }},
         "username": {{ .Values.glowroot.admin.ldap.connection.bindDN | quote }},
         "password": {{ .Values.glowroot.admin.ldap.connection.bindPw | quote }},
         "userBaseDn": {{ .Values.glowroot.admin.ldap.structure.userBaseDN | quote }},
