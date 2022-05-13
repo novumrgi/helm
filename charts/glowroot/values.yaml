@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   # quick fix patched image till official glowroot image works again
   repository: novumrgi/glowroot-central
-  tag: latest
+  tag: 0.14.0-beta.3
   pullPolicy: Always
 
 service:
@@ -25,6 +25,8 @@ service:
 
 securityContext:
   fsGroup: 999
+
+imagePullSecrets: []
 
 glowroot:
 #  extraInitConfig: |
@@ -114,23 +116,16 @@ cassandra:
   keyspace:
 
 ingress:
-  agent:
-    enabled: false
-    annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    hosts:
-      - glowroot-agent.local.com
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
   enabled: false
+  className: nginx
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - glowroot.local.com
+    - host: glowroot.local.com
+      paths:
+        - path: /
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

@@ -6,15 +6,16 @@ This is a kubernetes helm chart for Glowroot. It deploys a pod for glowroot-cent
 <!-- vscode-markdown-toc -->
 * 1. [Prerequisites](#Prerequisites)
 * 2. [Installation](#Installation)
-* 3. [Current Limitation](#CurrentLimitation)
-* 4. [Configuration](#Configuration)
-	* 4.1. [Image](#Image)
-	* 4.2. [Service](#Service)
-	* 4.3. [Glowroot Cassandra](#GlowrootCassandra)
-	* 4.4. [Glowroot UI](#GlowrootUI)
-	* 4.5. [Glowroot Admin](#GlowrootAdmin)
-	* 4.6. [Cassandra](#Cassandra)
-		* 4.6.1. [Ingress](#Ingress)
+* 3. [Breaking Changes](#Breaking-Changes)
+* 4. [Current Limitation](#CurrentLimitation)
+* 5. [Configuration](#Configuration)
+	* 5.1. [Image](#Image)
+	* 5.2. [Service](#Service)
+	* 5.3. [Glowroot Cassandra](#GlowrootCassandra)
+	* 5.4. [Glowroot UI](#GlowrootUI)
+	* 5.5. [Glowroot Admin](#GlowrootAdmin)
+	* 5.6. [Cassandra](#Cassandra)
+		* 5.6.1. [Ingress](#Ingress)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -34,7 +35,31 @@ This is a kubernetes helm chart for Glowroot. It deploys a pod for glowroot-cent
   helm install glowroot novum-rgi-helm/glowroot
 ```
 
-##  3. <a name='CurrentLimitation'></a>Current Limitation
+## 3. <a name='Breaking-Changes'></a>Breaking Changes
+
+In 1.0.8 the ingress was changed to support higher api version.
+
+You now have to provide a dictionary defining host, path and pathType
+
+```yaml
+ingress:
+  enabled: false
+  className: nginx
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: glowroot.local.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+```
+
+##  4. <a name='CurrentLimitation'></a>Current Limitation
 
 Since this image needs to configure the admin part via values this chart is based on a little patch for glowroot. Thats we this currently only works with novumrgi/glowroot-central image from [dockerhub](https://hub.docker.com/repository/docker/novumrgi/glowroot-central).
 
@@ -73,9 +98,9 @@ To get more information on the permissions format simply start glowroot with ano
             - MyOwnAdmin
 ```
 
-##  4. <a name='Configuration'></a>Configuration
+##  5. <a name='Configuration'></a>Configuration
 
-###  4.1. <a name='Image'></a>Image
+###  5.1. <a name='Image'></a>Image
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -83,7 +108,7 @@ To get more information on the permissions format simply start glowroot with ano
 |image.tag|Image Tag to download|0.13.7|
 |image.pullPolicy|Image pull policy|Always|
 
-###  4.2. <a name='Service'></a>Service
+###  5.2. <a name='Service'></a>Service
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -91,19 +116,19 @@ To get more information on the permissions format simply start glowroot with ano
 |service.port|Service port for Glowroot|4000|
 |service.agentPort|Service port for Glowroot-Agent|8181|
 
-###  4.3. <a name='GlowrootCassandra'></a>Glowroot Cassandra
+###  5.3. <a name='GlowrootCassandra'></a>Glowroot Cassandra
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
 |glowroot.cassandra.symmetricEncryptionKey|Database encryption Key, this should be changed when using the chart for security reasons|f8b62a6a4bd37abcc95e2f15d69c7b91|
 
-###  4.4. <a name='GlowrootUI'></a>Glowroot UI
+###  5.4. <a name='GlowrootUI'></a>Glowroot UI
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
 |glowroot.ui.contextPath|Set ui context path used for reverse Proxy settings||
 
-###  4.5. <a name='GlowrootAdmin'></a>Glowroot Admin
+###  5.5. <a name='GlowrootAdmin'></a>Glowroot Admin
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
@@ -149,7 +174,7 @@ This search filter is used to find the user based on the username they enter dur
 |glowroot.admin.smtp.fromEmailAddress|Mail address for alert mails||
 |glowroot.admin.smtp.fromDisplayName|Display name for alert mails||
 
-###  4.6. <a name='Cassandra'></a>Cassandra
+###  5.6. <a name='Cassandra'></a>Cassandra
 
 Cassandra database is loaded as a dependency from [bitnami](https://github.com/bitnami/charts)
 The complete cassandra configuration can be found here: https://github.com/bitnami/charts/tree/master/bitnami/cassandra
@@ -162,7 +187,7 @@ The following parameters are set by this charts by default
 |cassandra.dbUser.password|Password to be created for cassandra database|password|
 |cassandra.keyspace|Set keyspace for cassandra database||
 
-####  4.6.1. <a name='Ingress'></a>Ingress
+####  5.6.1. <a name='Ingress'></a>Ingress
 
 | Parameter           | Description                       | Default                      |
 |---------------------|-----------------------------------|------------------------------|
