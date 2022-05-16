@@ -9,6 +9,45 @@ metadata:
 spec:
   type: {{ .Values.service.collector.type }}
   {{- if and .Values.service.collector.loadBalancerIP (eq .Values.service.collector.type "LoadBalancer") }}
+  loadBalancerIP: {{ .Values.service.collector.loadBalancerIP  }}
+  {{- end }}
+  {{- if .Values.service.collector.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+  {{- range .Values.service.collector.loadBalancerSourceRanges }}
+    - {{ . }}
+  {{- end }}
+  {{- end }}
+  {{- if .Values.service.collector.externalIPs }}
+  externalIPs:
+    {{- toYaml .Values.service.collector.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if .Values.service.collector.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.service.collector.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.service.collector.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
+  {{- if .Values.service.collector.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.collector.externalTrafficPolicy }}
+  {{- end }}
+  {{- if and .Values.service.collector.clusterIP (eq .Values.service.collector.type "ClusterIP") }}
+  clusterIP: {{ .Values.service.collector.clusterIP }}
+  {{- end }}
+  ports:
+  - name: ui-collector
+    port: {{ .Values.service.collector.port }}
+    {{- if  .Values.service.collector.nodePort }}
+    nodePort: {{ .Values.service.collector.nodePort }}
+    {{- end }}
+    targetPort: collector-http
+    protocol: TCP
+  selector:
+    {{- include "glowroot.selectorLabels" . | nindent 4 }}
+
+spec:
+  type: {{ .Values.service.collector.type }}
+  {{- if and .Values.service.collector.loadBalancerIP (eq .Values.service.collector.type "LoadBalancer") }}
   loadBalancerIP: {{ .Values.service.collector.loadBalancerIP }}
   {{- end }}
   {{- if eq .Values.service.collector.type "ClusterIP" }}
@@ -24,7 +63,7 @@ spec:
   ports:
   - name: collector
     port: {{ .Values.service.collector.port }}
-    targetPort: collector-http
+    targetPort: collector-collector
     protocol: TCP
     {{- if .Values.service.collector.nodePort }}
     nodePort: {{ .Values.service.collector.nodePort }}
