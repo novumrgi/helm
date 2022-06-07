@@ -35,38 +35,12 @@ spec:
   clusterIP: {{ .Values.service.collector.clusterIP }}
   {{- end }}
   ports:
-  - name: ui-collector
+  - name: collector
     port: {{ .Values.service.collector.port }}
     {{- if  .Values.service.collector.nodePort }}
     nodePort: {{ .Values.service.collector.nodePort }}
     {{- end }}
     targetPort: collector-http
     protocol: TCP
-  selector:
-    {{- include "glowroot.selectorLabels" . | nindent 4 }}
-
-spec:
-  type: {{ .Values.service.collector.type }}
-  {{- if and .Values.service.collector.loadBalancerIP (eq .Values.service.collector.type "LoadBalancer") }}
-  loadBalancerIP: {{ .Values.service.collector.loadBalancerIP }}
-  {{- end }}
-  {{- if eq .Values.service.collector.type "ClusterIP" }}
-  clusterIP: {{ .Values.service.collector.clusterIP }}
-  {{- end }}
-  {{- if .Values.service.collector.externalIPs }}
-  externalIPs:
-  {{ toYaml .Values.service.collector.externalIPs | indent 4 }}
-  {{- end }}
-  {{- if .Values.service.collector.externalTrafficPolicy }}
-  externalTrafficPolicy: {{ .Values.service.collector.externalTrafficPolicy }}
-  {{- end }}
-  ports:
-  - name: collector
-    port: {{ .Values.service.collector.port }}
-    targetPort: collector-collector
-    protocol: TCP
-    {{- if .Values.service.collector.nodePort }}
-    nodePort: {{ .Values.service.collector.nodePort }}
-    {{- end }}
   selector:
     {{- include "glowroot.selectorLabels" . | nindent 4 }}
