@@ -101,7 +101,7 @@ awx:
     builtIn:
       enabled: true
     sslMode: prefer
-#    username:
+#    user:
 #    name:
 #    password:
 #    host:
